@@ -2,9 +2,100 @@
 
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+<svg width=1000 height=800>
+</svg>
+
+<p>
+Click to progress
+</p>
+
+var linscale = d3.scaleLinear()
+  .domain([0, 100]) // unit data
+  .range([0,1000]); // unit pixels
+
+// cat face
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 100 200 C 150 900, 850 900, 900 200 L 800 75 L 750 200 C 650 150, 350 150, 250 200 L 200 75 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'orange');
+
+// cat right eye
+d3.select('svg')
+  .append('circle')
+  .attr('cx', 350)
+  .attr('cy', 300)
+  .attr('r', 50);
+
+d3.select('svg')
+    .append('rect')
+    .attr('x', 337)
+    .attr('y', 280)
+    .attr('width', 20)
+    .attr('height', 40)
+    .attr('fill', 'green');
+
+// cat left eye
+d3.select('svg')
+  .append('circle')
+  .attr('cx', 650)
+  .attr('cy', 300)
+  .attr('r', 50);
+
+d3.select('svg')
+    .append('rect')
+    .attr('x', 637)
+    .attr('y', 280)
+    .attr('width', 20)
+    .attr('height', 40)
+    .attr('fill', 'green');
+
+// cat nose
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 475 400 L 525 400 L 500 450 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'red');
+
+// cat tongue
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 475 500 C 490 600, 510 600, 525 500 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'pink');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 450)
+  .attr('x2', 550)
+  .attr('y1', 500)
+  .attr('y2', 500)
+  .attr('stroke', 'black');
+
+// circle cover up
+d3.select('svg')
+  .append('circle')
+  .attr('cx', 500)
+  .attr('cy', 400)
+  .attr('r', 450)
+  .attr('fill', 'violet')
+  .on('click', function(event) {
+        d3.select(this)
+          .remove()
+    });
+
+// rectangle cover up
+d3.select('svg')
+  .append('rect')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('height', 800)
+  .attr('width', 1000)
+  .attr('fill', 'turquoise')
+  .on('click', function(event) {
+        d3.select(this)
+          .remove()
+    });
+
 </script>
