@@ -1,10 +1,158 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment 1 - Hilson Shrestha</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: serif;
+      }
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+      body {
+        background: #000;
+      }
+
+      #viz {
+        height: 100vh;
+      }
+
+      #info {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        background: #fff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viz"></div>
+    <div id="info">CS573 A1 Hilson Shrestha. [Connect the dots.] <span id="total-connections">(0 / 500)</span><div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <script>
+      let screenWidth = window.innerWidth - 10;
+      let screenHeight = window.innerHeight - 50;
+      let svg;
+      const linkedElems = [];
+      const linkedElemsLines = [];
+      let gLinkedElems;
+      let gLinkedElemsLines;
+      let gLinkedPath;
+      let scoreElem;
+
+      const xScale = d3
+        .scaleLinear()
+        .domain([0, screenWidth])
+        .range([0, screenWidth]);
+
+      const yScale = d3
+        .scaleLinear()
+        .domain([0, screenHeight])
+        .range([0, screenHeight]);
+
+      const pathLine = d3
+        .line()
+        .x((d) => xScale(d.x))
+        .y((d) => yScale(d.y))
+        .curve(d3.curveNatural);
+
+      const renderLinkedElems = () => {
+        gLinkedElems
+          .selectAll("rect")
+          .data(linkedElems)
+          .enter()
+          .append("rect")
+          .attr("x", (d) => d.x - 5)
+          .attr("y", (d) => d.y - 5)
+          .attr("fill", (d) => d.color)
+          .attr("stroke", "rgba(255, 255, 255, .5)")
+          .attr("width", 10)
+          .attr("height", 10)
+          .transition(d3.easePoly)
+          .duration(1000)
+          .attr("height", 20)
+          .attr("width", 20)
+          .attr("x", (d) => d.x - 10)
+          .attr("y", (d) => d.y - 10);
+
+        gLinkedElemsLines
+          .selectAll("line")
+          .data(linkedElemsLines)
+          .enter()
+          .append("line")
+          .attr("x1", (d) => d.x1)
+          .attr("y1", (d) => d.y1)
+          .attr("x2", (d) => d.x2)
+          .attr("y2", (d) => d.y2)
+          .attr("stroke", "rgba(255,255,255,.25");
+
+        gLinkedPath
+          .selectAll("path")
+          .data([pathLine(linkedElems)])
+          .attr("stroke", "rgba(255, 255, 255, .5)")
+          .attr("d", pathLine(linkedElems))
+          .attr("fill", "transparent");
+      };
+
+      window.addEventListener("load", function (event) {
+        const viz = d3.select("#viz");
+        scoreElem = d3.select('#total-connections');
+
+        // Add svg
+        svg = viz.append("svg").attr("width", "100%").attr("height", "100%");
+
+        gLinkedPath = svg.append("g");
+        gLinkedPath.append("path");
+        gLinkedElemsLines = svg.append("g");
+        gLinkedElems = svg.append("g");
+        const g = svg.append("g");
+        const elements = [];
+        for (let i = 0; i < 500; i++) {
+          elements.push({
+            x: d3.randomInt(0, screenWidth)(),
+            y: d3.randomInt(0, screenHeight)(),
+            connections: [],
+            color:
+              "#" +
+              Math.floor((Math.random() * Math.pow(2, 32)) ^ 0xffffff)
+                .toString(16)
+                .substr(-6),
+          });
+        }
+
+        g.selectAll()
+          .data(elements)
+          .enter()
+          .append("circle")
+          .attr("cx", (d) => d.x)
+          .attr("cy", (d) => d.y)
+          .attr("r", 10)
+          .on("mouseenter", function (e, d) {
+            if (linkedElems.length) {
+              const lastElem = linkedElems[linkedElems.length - 1];
+              linkedElemsLines.push({
+                x1: lastElem.x,
+                y1: lastElem.y,
+                x2: d.x,
+                y2: d.y,
+              });
+            }
+            linkedElems.push(d);
+            linkedElems[linkedElems.length - 1];
+            d3.select(this).remove();
+            renderLinkedElems();
+            scoreElem.text("(" + linkedElems.length + " / 500)");
+          })
+          .on("mouseleave", function (e, d) {
+            d3.select(this).transition(d3.easePoly).duration(1000).attr("r", 5);
+          })
+          .attr("fill", (d) => d.color)
+          .attr("stroke", "rgba(255, 255, 255, .25)")
+      });
+    </script>
+  </body>
+</html>
