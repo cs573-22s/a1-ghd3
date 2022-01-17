@@ -1,8 +1,144 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
+<svg width="600" height="600"  id="svg1">
+  <style>
+    .label { font: italic 13px sans-serif; }
+  </style>
+</svg>
+<svg width="300" height="300"  id="svg2">
+  <style>
+    .label { font: italic 13px sans-serif; }
+  </style>
+</svg>
+
+<svg width="600" height="600"  id="svg3">
+  <style>
+    .label { font: italic 13px sans-serif; }
+  </style>
+</svg>
 
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+  var dataset = [73, 18, 56, 38, 4]
+  var linscale = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, 600])
+
+  var maxHeight = d3.select('svg').attr('height')
+  var maxWidth  = d3.select('svg').attr('width')
+  var offset = 20
+  var spacing   = (maxWidth-offset)/dataset.length
+
+  var selection = d3.select('#svg1')
+  var circleSVG = d3.select('#svg2')
+  var pathSVG   = d3.select('#svg3')
+
+  const indexText = d3.local()
+  const index = d3.local()
+  
+  selection.selectAll('g')
+    .data(dataset)
+    .enter().append('g')
+    .each(function(d, i) {
+      indexText.set(this, i);   // Store index in local variable.
+    })
+    .on('mouseover', function(){
+      selection.selectAll('text').remove()
+      // console.log(indexText.get(this))
+      d3.select(this).append('text')
+        .attr('x', function(d) {return indexText.get(this)*spacing + offset + 2.5})
+        .attr('y', function(d) {return maxHeight - linscale(d)-10})
+        .attr('class', 'label')
+        .text(function(d) {return ""+d})
+    })
+    .on('mouseout', function(){
+      selection.selectAll('text').remove()
+    })
+    .append('rect')
+    .attr("x", function(d, i) {return i*spacing + offset;})
+    .attr("y", function(d) {return maxHeight-linscale(d);})
+    .attr("width", 20)
+    .attr("height", function(d) {return linscale(d)})
+    .each(function(d, i) {
+      index.set(this, i);   // Store index in local variable.
+    })
+    .on("mouseover", function() {
+      d3.select(this)
+        .attr("width", 25)
+        .attr("height", function(d) {return linscale(d)+5})
+        .attr("x", function(d) { return index.get(this)*spacing + offset - 2.5;})
+        .attr("y", function(d) {return maxHeight-linscale(d)-2.5})
+    })
+    .on("mouseout", function() {
+      d3.select(this)
+      .attr("width", 20)
+      .attr("height", function(d) {return linscale(d)})
+      .attr("x", function(d, i) { return index.get(this)*spacing + offset;})
+      .attr("y",function(d) {return maxHeight-linscale(d)})
+    });
+    
+  circleSVG.append('text')
+    .attr('x', 10)
+    .attr('y', 10)
+    .attr('opacity', 0)
+    .attr('class', 'label')
+  var textb = circleSVG.select('text')
+  var texts = ["weee", "wooo", "yipee", "ahhhh", "im dizzy", "slow down", "*pukes*"]
+
+  circleSVG.append('circle')
+    .attr('cx', 150)
+    .attr('cy', 150)
+    .attr('r' , 30)
+    .attr('fill', 'blue')
+    .on("mouseover", function(){
+      var randInt = Math.floor(Math.random()*texts.length)
+      textb.text(texts[randInt])
+    })
+    .on("mousemove", function(e){
+      var circleOff = 150
+      var m = d3.pointer(e)
+      var x = m[0] - circleOff
+      var y = m[1] - circleOff
+
+      var ep = Math.sqrt(x**2 + y**2)
+
+      var theta = Math.acos(x/ep)*180/Math.PI
+      
+      if (y<0)
+        theta=180+180-theta
+
+      var r = 30
+      var newX = r*Math.cos(theta*Math.PI/180) + circleOff
+      var newY = r*Math.sin(theta*Math.PI/180) + circleOff
+
+      if (!isNaN(theta)) textb.attr('opacity', 1)
+        .transition().duration(50)
+        .attr('transform', "translate("+newX+","+newY+")rotate("+(theta)+")")
+    })
+    .on("mouseout", function(){
+      textb.attr("opacity", 0)
+    })
+  
+  var pathData = [[80, 30], [100, 5], [200, 30], [300, 50], [400, 20], 
+                  [300, 5], [200, 30], [100, 50], [80, 30]]
+  var line = d3.line().curve(d3.curveNatural)
+  var path = pathSVG.append("path")
+    .attr("d", line(pathData))
+    .attr("stroke", "green")
+    .attr("stroke-width", 3)
+    .attr("fill", "none")
+    
+  let repeat = () => {
+    var pathLength = path.node().getTotalLength();
+    path.attr("stroke-dasharray", (pathLength/2) + " " + (pathLength/2))
+      .attr("stroke-dashoffset", pathLength)
+      .transition()
+        .duration(3000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
+        .on("end", repeat)
+  }
+
+  repeat()
   // Add Rectangles
   // Add Circles
   // Add Lines
