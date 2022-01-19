@@ -1,10 +1,147 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<p id="p1">
+CIRCLE
+</p>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+d3.selectAll('#p1')
+    .style('color', 'blue');
 </script>
+
+<svg id="map1" width=600 height=100>
+</svg>
+
+<script>
+var dataset = [20];
+
+var linscale = d3.scaleLinear()
+	.domain([0, 50]) // unit: km
+	.range([0, 100]) // unit: pixels
+
+var sel = d3.select('#map1')
+	.selectAll('#map1')
+	.data(dataset)
+	.enter().append('circle')
+	.attr('cx', function(d) { return linscale(d); })
+	.attr('cy', function(d) { return linscale(d); })
+	.attr('r', 25)
+	.attr('id', function(d, i) { return 'rect'+i; })
+	//move
+	.on('click', function(event) {
+		d3.select(this)
+		.transition()
+		.duration(5000)
+		.ease(d3.easeLinear)
+		.attr('cx', function(d) { return linscale(d) + 200; })
+		.attr('fill', 'purple');
+    })
+
+</script>
+
+
+
+<p id="p2">
+RECT
+</p>
+
+<script>
+d3.selectAll('#p2')
+    .style('color', 'blue');
+</script>
+
+
+<svg id="map2" width=300 height=150>
+</svg>
+
+
+<script>
+
+d3.selectAll('#map2')
+	.attr("fill","green")
+	.append('rect')
+	.attr('x', 20)
+	.attr('y', 20)
+	.attr("width",50)
+                .attr("height",70)
+
+//change the clolor
+d3.select('#map2')
+	.on('click', function(event) {
+		d3.select(this)
+          		.transition()
+		.duration(500)
+                                .attr('fill', 'red')
+});
+
+</script>
+
+
+
+<p id="p3">
+LINE
+</p>
+
+<script>
+d3.selectAll('#p3')
+    .style('color', 'blue');
+</script>
+
+
+<svg id="map3" width=300 height=130>
+</svg>
+
+<script>
+var dataset = [0, 10, 300, 50];
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[1]+0)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[3]+0)
+	.attr("stroke", "red")
+	.attr("stroke-width", "5px");
+               
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[3]+10)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[1]+10)
+	.attr("stroke", "green")
+	.attr("stroke-width", "5px");
+
+</script>
+
+
+
+
+<p id="p4">
+PATH
+</p>
+
+<script>
+d3.selectAll('#p4')
+    .style('color', 'blue');
+</script>
+
+
+<svg width="200" height="200">
+
+      <path d=" M 10 25
+
+                S 10 75 60 80
+
+	S 46 30 73 92
+
+	S 12 88 67 11"
+
+                stroke="red" stroke-width="6" fill="yellow" />
+
+    </svg>
+
+<script>
+
+</script>
+
+
