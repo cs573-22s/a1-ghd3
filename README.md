@@ -1,86 +1,37 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+Link to project: https://trumanlarson.github.io/a1-ghd3/index.html
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+Screenshot 1 (initial state)
+![initial state](https://trumanlarson.github.io/a1-ghd3/screenshot.png)
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+Screenshot 2 (in use state)
+![in use state](https://trumanlarson.github.io/a1-ghd3/screenshot2.png)
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+Project description: 
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+- Element 1: Interactive bar graph
+    - This is a simple bar graph that has interactability that adds information to the graph. If you hover over it, it emphasises the hovered element and displays the value of the element on top of it. This adds readability to the graph and makes it easier to compare the elements (hmmm...) while keeping it not as cluttered at a glance.
 
-Resources
----
+- Element 2: Interactive circle
+    - This may seem like a normal circle, but that is far from the truth. If you hover over it, you will see that some text and a line seem to follow your movement, but not directly. The circle takes where your mouse is and projects it to its edge to place the text and line and rotate it accordingly. It also seems to have a bit of a personality. 
+    
+- Element 3: Infinity path
+    - This is not interactive, but it was a cool animation. I research on how to animate paths and implemented it only to find it wasnt as satisfying as I wanted. I toyed around with the path itself to make it into a looping animation that at the very least satisfied me. 
 
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
+Technical achievements:
+1. Bar graph interactability and displaying of text in proper places
+2. Circle text/line placement and projection (required a bunch of circle math)
+3. Animating the path
 
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
+Design achievements:
+1. Bar graph visual clarity and interactive clarity (ie its clear what information is tied to what element)
+2. The bar interaction takes into account the length of the data to present it properly (either length of two digits or one for now) 
+3. Circle is interactive, smooth, and has a personality (I named it arccosine after the math that was required)
+4. The path animation is able to loop, increasing satisfaction levels
 
-Requirements
----
 
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
 
-GitHub Details
----
 
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Paths  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
 
