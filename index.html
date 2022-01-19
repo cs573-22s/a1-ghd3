@@ -41,55 +41,99 @@
     .each(function(d, i) {
       indexText.set(this, i);   // Store index in local variable.
     })
-    .on('mouseover', function(){
+    .on('mouseover', function(){ // when box is moused over
+      // clear tooltip text from other boxes
       selection.selectAll('text').remove()
-      // console.log(indexText.get(this))
+      
+      // create new text box on the moused over box
       d3.select(this).append('text')
-        .attr('x', function(d) {return indexText.get(this)*spacing + offset + 2.5})
+        // get the correct X spacing and add other offset
+        .attr('x', function(d) {
+          var numberLength = ("" + d).length
+          var numberOffset = 2.5
+          if (numberLength === 1){
+            numberOffset = 5
+          }
+          return indexText.get(this)*spacing + offset + numberOffset
+        })
+        // position it above the bar 
         .attr('y', function(d) {return maxHeight - linscale(d)-10})
         .attr('class', 'label')
         .text(function(d) {return ""+d})
     })
     .on('mouseout', function(){
+      // clear the text when you leave a box
       selection.selectAll('text').remove()
     })
-    .append('rect')
-    .attr("x", function(d, i) {return i*spacing + offset;})
-    .attr("y", function(d) {return maxHeight-linscale(d);})
+    .append('rect') // create all of the boxes
+    .attr("x", function(d, i) {return i*spacing + offset;}) // space out the boxes evenly
+    .attr("y", function(d) {return maxHeight-linscale(d);}) // bars on the same y level
     .attr("width", 20)
-    .attr("height", function(d) {return linscale(d)})
+    .attr("height", function(d) {return linscale(d)}) // bars based off data
     .each(function(d, i) {
       index.set(this, i);   // Store index in local variable.
     })
     .on("mouseover", function() {
+      // when the box is moused over:
+      // make it bigger
+      // adjust position so making it bigger doesnt make it move
+      // change fill
       d3.select(this)
         .attr("width", 25)
         .attr("height", function(d) {return linscale(d)+5})
         .attr("x", function(d) { return index.get(this)*spacing + offset - 2.5;})
         .attr("y", function(d) {return maxHeight-linscale(d)-2.5})
+        .attr('fill', 'grey')
     })
     .on("mouseout", function() {
+      // when box is moused out:
+      // reset size and position
+      // reset fill
       d3.select(this)
       .attr("width", 20)
       .attr("height", function(d) {return linscale(d)})
       .attr("x", function(d, i) { return index.get(this)*spacing + offset;})
       .attr("y",function(d) {return maxHeight-linscale(d)})
+      .attr('fill', 'black')
     });
     
+  
+
+  
+  // create the moving text box
   circleSVG.append('text')
     .attr('x', 10)
     .attr('y', 10)
-    .attr('opacity', 0)
     .attr('class', 'label')
+    .text("Mouse over Arccosin the interactive circle!")
   var textb = circleSVG.select('text')
+  // list of potential words
   var texts = ["weee", "wooo", "yipee", "ahhhh", "im dizzy", "slow down", "*pukes*"]
 
-  circleSVG.append('circle')
-    .attr('cx', 150)
+  var circ = circleSVG.append('circle') // circle added after text
+  
+  // line added last
+  // create the line follower
+  circleSVG.append('line')
+    .attr('x1', 150)
+    .attr('y1', 150)
+    .attr('x2', 150)
+    .attr('y2', 150)
+    .style('stroke', "yellow")
+    .style('stroke-width', 3)
+    .attr('z-index', 10)
+
+
+  var circLine = circleSVG.select('line')
+
+  // setup circle
+  circ.attr('cx', 150)
     .attr('cy', 150)
     .attr('r' , 30)
     .attr('fill', 'blue')
+    .attr('z-index', 1)
     .on("mouseover", function(){
+      // every time we enter the circle, change the text
       var randInt = Math.floor(Math.random()*texts.length)
       textb.text(texts[randInt])
     })
@@ -99,25 +143,34 @@
       var x = m[0] - circleOff
       var y = m[1] - circleOff
 
+      // get the distance between the mouse and the center of the circle
       var ep = Math.sqrt(x**2 + y**2)
 
-      var theta = Math.acos(x/ep)*180/Math.PI
+      // from that get the theta of the mouse position 
+      var theta = Math.acos(x/ep)*180/Math.PI // in degrees
       
-      if (y<0)
+      if (y<0) // fix a case for half the circle
         theta=180+180-theta
 
-      var r = 30
+      // project the position of the mouse to the edge of the circle
+      var r = 30 
       var newX = r*Math.cos(theta*Math.PI/180) + circleOff
       var newY = r*Math.sin(theta*Math.PI/180) + circleOff
 
+      // update the circle line to follow the text
+      circLine.transition().duration(50)
+        .attr('x1', newX)
+        .attr('y1', newY)
+        .attr('x2', 75*Math.cos(theta*Math.PI/180) + circleOff)
+        .attr('y2', 75*Math.sin(theta*Math.PI/180) + circleOff)
+
+      // move and rotate the text to the projected position and the angle
       if (!isNaN(theta)) textb.attr('opacity', 1)
         .transition().duration(50)
         .attr('transform', "translate("+newX+","+newY+")rotate("+(theta)+")")
     })
-    .on("mouseout", function(){
-      textb.attr("opacity", 0)
-    })
-  
+
+  // path was chosen to loop semi smoothly
   var pathData = [[80, 30], [100, 5], [200, 30], [300, 50], [400, 20], 
                   [300, 5], [200, 30], [100, 50], [80, 30]]
   var line = d3.line().curve(d3.curveNatural)
@@ -127,6 +180,11 @@
     .attr("stroke-width", 3)
     .attr("fill", "none")
     
+  /*
+   * Path code based off: https://observablehq.com/@onoratod/animate-a-path-in-d3
+   */
+  
+  // creates a path that repeatedly draws over a certain path
   let repeat = () => {
     var pathLength = path.node().getTotalLength();
     path.attr("stroke-dasharray", (pathLength/2) + " " + (pathLength/2))
@@ -139,8 +197,8 @@
   }
 
   repeat()
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  // -Add Rectangles
+  // -Add Circles
+  // -Add Lines
+  // -Add ~Polygons~ paths
 </script>
