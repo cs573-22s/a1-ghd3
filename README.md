@@ -84,3 +84,8 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+--------------------------------------------------------------------------------------------
+
+1. for the circle and rect, I added movement and color changing once you click the graph.
+
+2 I tried a lot to add something on the line but I failed.
