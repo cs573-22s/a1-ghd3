@@ -10,8 +10,8 @@ var style = ['orange','blue'];
 d3.selectAll('circle')
   .on('click', function(e, d) {
     d3.select(this)
-      .style('fill',style[count]);
-      count = 1;
+      .style('fill',style[count%2]);
+      count++;
   });
 
 </script>
