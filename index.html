@@ -5,7 +5,7 @@
   <circle class="target" style="fill: rgb(97, 97, 226)" stroke="black" cx=50 cy=50 r=40></circle></svg>
 <h2>Click on the circle to change its color</h2>
 <svg> 
-  <rect x=50 y=100 style="fill: rgb(67, 179, 216)" stroke="black"  width="200" height="200"></rect>>
+  <rect x=40 y=100 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
 </svg>
 <script>
 
@@ -16,6 +16,14 @@ d3.selectAll('circle')
     d3.select(this)
       .style('fill',style[count%2]);
       count++;
+  });
+var count2 = 0;
+var style2= ['orange','lightblue'];
+d3.selectAll('rect')
+  .on('mouseover', function(e, d) {
+    d3.select(this)
+      .style('fill',style2[count2%2]);
+      count2++;
   });
 
 </script>
