@@ -2,7 +2,7 @@
 <h1>Assignment 1 - Joseph Cybul</h1>
 
 <svg> 
-  <circle class="target" style="fill: rgb(97, 97, 226)" stroke="black" cx=50 cy=50 r=40></circle></svg>
+  <circle class="target" style="fill: lightblue" stroke="black" cx=50 cy=50 r=40></circle></svg>
 <h2>Click on the circle to change its color</h2>
 <svg> 
   <rect x=20 y=10 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
@@ -11,7 +11,7 @@
 <script>
 
 var count = 0;
-var style = ['orange','blue'];
+var style = ['orange','lightblue'];
 d3.selectAll('circle')
   .on('click', function(e, d) {
     d3.select(this)
