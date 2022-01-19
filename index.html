@@ -1,6 +1,13 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <h1>Assignment 1</h1>
-
 <svg> 
   <circle class="target" style="fill: #69b3a2" stroke="black" cx=50 cy=50 r=40></circle>
 </svg>
+
+<script>
+d3.selectAll('circle')
+  .on('click', function(e, d) {
+    d3.select(this)
+      .style('fill', 'orange');
+  });
+</script>
