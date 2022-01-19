@@ -5,9 +5,13 @@
 </svg>
 
 <script>
+var count = 0;
+var style = ['orange','blue'];
 d3.selectAll('circle')
   .on('click', function(e, d) {
     d3.select(this)
-      .style('fill', 'orange');
+      .style('fill',style[count]);
+      count = 1;
   });
+
 </script>
