@@ -2,45 +2,45 @@
 <h1>Assignment 1 - Joseph Cybul</h1>
 
 <svg> 
-  <circle class="target" style="fill: lightblue" stroke="black" cx=50 cy=50 r=40></circle></svg>
+<circle class="target" style="fill: lightblue" stroke="black" cx=50 cy=50 r=40></circle></svg>
 <h2>Click on the circle to change its color</h2>
 <svg> 
-  <rect x=20 y=10 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
+<rect x=20 y=10 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
 </svg>
 <h2>Hover over the rectangle to change its color</h2>
 
 <svg> 
-  <line x1="10" y1="300" x2="100" y2="20" stroke="black" /></svg>
+<line x1="10" y1="300" x2="100" y2="20" stroke="black" /></svg>
 
 <script>
 
 var count = 0;
 var style = ['orange','lightblue'];
 d3.selectAll('circle')
-  .on('click', function(e, d) {
-    d3.select(this)
-      .style('fill',style[count%2]);
-      count++;
-  });
+.on('click', function(e, d) {
+  d3.select(this)
+    .style('fill',style[count%2]);
+    count++;
+});
 var count2 = 0;
 var style2= ['orange','lightblue'];
 d3.selectAll('rect')
-  .on('mouseover', function(e, d) {
-    d3.select(this)
-      .style('fill',style2[count2%2]);
-      count2++;
-  });
+.on('mouseover', function(e, d) {
+  d3.select(this)
+    .style('fill',style2[count2%2]);
+    count2++;
+});
 
+d3.selectAll('line')
+.on('mousemove', function(e, d) {
 
 var coordinates= d3.mouse(this);
 var x = coordinates[0];
 var y = coordinates[1];
-d3.selectAll('line')
-  .on('mousemove', function(e, d) {
-    d3.select(this)
-    .attr('y1',x)
-    .attr('y2',y)
-    
-  });
+d3.select(this)
+  .attr('y1',x)
+  .attr('y2',y)
+  
+});
 
 </script>
