@@ -32,4 +32,15 @@ d3.selectAll('rect')
   });
 
 
+var coordinates= d3.mouse(this);
+var x = coordinates[0];
+var y = coordinates[1];
+d3.selectAll('line')
+  .on('mousemove', function(e, d) {
+    d3.select(this)
+    .attr('y1',x)
+    .attr('y2',y)
+    
+  });
+
 </script>
