@@ -8,6 +8,14 @@
   <rect x=20 y=10 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
 </svg>
 <h2>Hover over the rectangle to change its color</h2>
+
+<svg> 
+  <line x=20 y=10 style="fill: black" stroke="black"  width="200" height="200"></line>>
+</svg>
+
+
+
+
 <script>
 
 var count = 0;
@@ -26,5 +34,6 @@ d3.selectAll('rect')
       .style('fill',style2[count2%2]);
       count2++;
   });
+
 
 </script>
