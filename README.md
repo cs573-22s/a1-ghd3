@@ -1,86 +1,47 @@
-Assignment 1 - Hello World: GitHub and d3  
-===
+###### Marcus Chalmers
+###### Project A1
 
-This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
+[Link to Page](https://mchalmers.github.io/a1-ghd3/index.html)
 
-The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
+In the link above you can find the Live URL to my "D3 Experience"
+Upon first viewing the webpage You're greeted with three buttons and a blank graph.
 
-The secondary goal is to introduce you to coding on GitHub, including creating a gh-pages branch to host your visualizations.
+![Random Shapes Example](https://github.com/mchalmers/a1-ghd3/blob/gh-pages/MainScreen.JPG?raw=true)
 
-You may write everything from scratch, or start with demo programs from books or the web. 
-If you do start with code that you found, you **must identify** the source of the code in your README and, most importantly, make non-trivial changes to the code to make it your own so you really learn what you're doing. 
+The basic requirements for this project include creating circles, rectangles, lines, and polygons in different colors
+and different areas. These three buttons will generate a circle, square, or six-sided polygon of random size, color,
+and position. (While lines are another requirement for the project, I didn't think they would look good with the other shapes,
+so I just made one line to show the start and boundaries of the graph).
 
-For example, you could download one of the d3.js examples, read it through so you understand what it's doing, and then change the appearance of the graphical output to use different color schemes, different primitive shapes, different layouts of the primitives, and so on.
+For each shape generated, the graph will update a specific path in the graph to show the new random size created.
 
-Resources
----
+![Welcome Page](https://github.com/mchalmers/a1-ghd3/blob/gh-pages/RandomlyGeneratedArt.JPG?raw=true)
 
-If you need a JavaScript/HTML/CSS refresher, see [JavaScript Codeacademy](https://www.codecademy.com/en/tracks/javascript) or find one of your choosing on the web.
+The webpage is very straightforward in its functionality, but it does extend beyond the baseline requirements for this project:
 
-If you need a Git/GitHub refreseher, some possible resources include [Getting Started with GitHub](https://help.github.com/categories/bootcamp/), the [GitHub Guides](https://guides.github.com/) (especially the ones on Hello World, and Understanding the GitHub Flow, and Forking Projects), and [CodeSchool's Try Git Course](https://www.codeschool.com/courses/try-git).
+###### Technical Acheivement: 
+In an attempt to go beyond just creating a couple of random shapes of different colors and sizes I figured I would generate the process 
+allowing the user to create an unlimited number of different shapes if they wanted to. This took more research than I was expecting
+to pull off. I haven't included any code references in this README because I started my index.html from scratch, however, I did make use of
+the code example used in class as well as the D3 API and general syntax references online. Using a method similar to what we learned in class
+I wanted to use a data array to hold the values of the different shapes and then add to that data to create new shapes. It didn't work exactly
+like how I was expecting it to so I used the update on each button press to reset all the shapes of that type. There is probably a better
+way to accomplish updating data/variables in D3 but for what I wanted to accomplish this worked perfectly. Not only did I work towards fully
+generating all of the shapes on the webpage (aside from the line), I decided to make a graph based on the shapes using paths. 
+I got the idea from how most people tend to create line graphs in D3. I was able to find out how to use paths one point at a time through
+the API and was eventually able to implement it through the button updates as well.
 
-Requirements
----
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
-
-GitHub Details
----
-
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
-
-Submission Details
----
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Note: name your pull request using the following scheme: 
-```
-a1-your Gh username-your first name-your lastname
-
-```
-
-Vis Details
----
-
-For this project you should use d3.js. 
-You can learn from examples on the [d3.js](http://d3js.org) site or start from scratch.
-
-See the [Using d3js](https://github.com/mbostock/d3/wiki#using) documentation for how to run your own local server.
-
-Creative solutions are welcome! In the past I've seen recreations of paintings, interactives, and more.
-
-Go beyond the minimum requirements of this project.
-Experiment with other aspects of the [d3 API](https://github.com/mbostock/d3/wiki/API-Reference) and [d3 Tutorials](https://github.com/mbostock/d3/wiki/Tutorials). 
-Try making the elements interactive, for example, or animate them.
-
-Grading
----
-
-Grades are on a 120 point scale. 
-96 points will be graded for functionality: the program does what the assignment requests with an informative README. 
-
-We will use Google Chrome to view submissions. 
-Be sure to test your code there.
-
-Below are some, but not necessarily all, of the key points we will consider during grading:
-
-- Circles and Rectangles  
-- Lines  
-- Paths  
-- Different colors  
-- README Quality
-    - A description of what you have created. 1-2 screenshots are recommended for the README.  
-    - A working link to the hosted files (usually the gh-pages 'live' url)  
-    - Section for Technical and Design Achievements
-
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
-
-Remember, it is up to *you* to define what constitutes a technical and design achievements.
-Be ambitious as these are designed to allow you to shape your learning.
-These are the only way to move from B to A territory.
-
+###### Design Acheivement:
+When we were told about SVG paths in class I immediately realized that there's already a file type called SVG that's used for vector graphics.
+Since we were supposed to create something using these paths I hoped that I would be able to get the path from within an SVG type file.
+The SVG file type normally opens in a browser as an image but I soon figured out that you can get the path by inspecting the page source.
+Now that I knew I could get the path from an SVG file, I found [this one editor online](https://yqnn.github.io/svg-path-editor/) that allows you to
+build and run simple transformations on complex paths. From there the only thing I needed was an actual SVG. I didn't want to use anything someone
+else had made so, I found a drawing I had made previously of this character. It was saved as a PNG but using photoshop I was able to eventually
+convert it to a vector and save both colors (linework and shading) as SVG files. From there I could size them more correctly in the online editor
+and I was able to paste the path strings into my code. The reason I consider this process part of the Design achievement is because It's mainly a 
+test of how much is reasonably possible with SVG paths. I would consider myself fairly proficient in photoshop, and while illustrator would be a
+better program to use for this scenario, the simple fact that I was able to recreate my drawing with essentially no detail lost within D3 opens the
+door for so many design opportunities in the future. I need to learn more about D3 to figure out what's possible but if paths can be 
+created with an insane amount of detail in a reasonable amount of time, I am very excited for future project possibilities.
+![Character Portrait](https://github.com/mchalmers/a1-ghd3/blob/gh-pages/SVGpathPortrait.JPG?raw=true)
