@@ -207,7 +207,9 @@ d3.select('#map3')
 
 
 <p id="p4">
-This is the path, it looks like a butterfly (or a flower ^_^)
+This is the path, it looks like a flower❀
+</br>
+Press on (not click) the blue butterfly below the flower, and it will fly to the flower.
 </p>
 
 <script>
@@ -216,7 +218,7 @@ d3.selectAll('#p4')
 </script>
 
 
-<svg id='map4' width="500" height="200">
+<svg id='map4' width="200" height="155">
 
       <path d=" M 15 10
 
@@ -266,7 +268,40 @@ d3.selectAll('#p4')
 
                 stroke="#FCE0FB" stroke-width="5" fill="none" />
 
-    </svg>
+
+<style>
+    #Butterfly {
+      margin: 80px;
+      width: 20px;
+      height: 20px; 
+      border-left: 55px solid navy;
+      border-right: 55px solid navy;
+      border-bottom: 55px solid transparent;
+      border-top: 55px solid transparent;
+
+      transition: 15s;
+
+    }
+    #Butterfly:active {
+      transform: rotateY(3600deg);
+      border-left: 15px solid red;
+      border-right: 15px solid red;
+      border-bottom: 15px solid transparent;
+      border-top: 15px solid transparent;
+      margin: -15px;
+
+      width: 5px;
+      height: 5px; 
+    }
+
+  </style>
+</svg>
+
+
+
+<body>
+  <div id="Butterfly"></div>
+</body>
 
 
 
@@ -307,3 +342,5 @@ d3.selectAll('#p5')
             WindMill.currentTheta += 1;
         }
     </script>
+
+
