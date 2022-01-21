@@ -1,7 +1,7 @@
 # CS573 Assignment 1 - Hello World using D3
 
 ## Link
-Live url: http://johvanniperez.github.io/a1-ghd3/index.html
+Live url: https://johvanniperez.github.io/a1-ghd3/index.html
 
 ## Inspiration & Motivation
 I began my project by exploring online cool projects that utilize javascript and d3. I mainly came across projects from codepen that were coded mostly using javascript/css/html, but I gave them all a look so that I could begin generating ideas of what I wanted to accomplish for this assignment. Here are some links that I found cool and interesting and that motivated the concept behind my project.
