@@ -1,5 +1,7 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <h1>Assignment 1 - Joseph Cybul</h1>
+<h2 id = "counter"></h2>
+
 
 <svg> 
 <circle class="target" style="fill: lightblue" stroke="black" cx=50 cy=50 r=40></circle></svg>
@@ -11,12 +13,15 @@
 <svg> 
 <line x1="10" y1="300" x2="100" y2="20" stroke="red"></svg>
 <svg>
-  <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
+  <polygon points="200,10 250,190 160,210" style="fill:rgb(198, 25, 204);stroke:purple;stroke-width:1" />
 </svg>
 
 
 <script>
 
+var clickCounter = 0;
+var hoverCounter = 0;
+document.getElementById("counter").innerHTML = clickCounter;
 var count = 0;
 var style = ['orange','lightblue'];
 d3.selectAll('circle')
@@ -24,6 +29,7 @@ d3.selectAll('circle')
   d3.select(this)
     .style('fill',style[count%2]);
     count++;
+    clickCounter++;
 });
 var count2 = 0;
 var style2= ['orange','lightblue','red','gray','green'];
@@ -32,6 +38,8 @@ d3.selectAll('rect')
   d3.select(this)
     .style('fill',style2[count2%5]);
     count2++;
+    hoverCounter++;
+
 });
 
 d3.selectAll('line')
