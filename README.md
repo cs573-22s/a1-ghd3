@@ -84,3 +84,7 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+
+Joseph Cybul- A1
+
+For this assignemnt I started by testing out how to create differnt shapes, first a circle rectangle, and then moved on to drawing lines and polygons. once I was confortable with creating shapes, I decided to experiment with differnt colors, which was not too diffcult. So I decided to find ways to change the colors of the shapes. For design Achivements, I decied to have text to indicate the functionslity of the page, as well as one examle of each shape I created. As for the technical achivements, I explored 
