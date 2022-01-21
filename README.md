@@ -4,11 +4,11 @@ Link to project: https://124135417.github.io/a1-ghd3/
 
 Screenshot:
 
-https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot1.png
+![Settings Window](https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot1.png)
 
-https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot2.png
+![Settings Window](https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot2.png)
 
-https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot3.png
+![Settings Window](https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot3.png)
 
 Project Description:
 
