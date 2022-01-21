@@ -1,10 +1,390 @@
+<!DOCTYPE html>
+
 <script src="https://d3js.org/d3.v6.min.js"></script>
+
+<svg id="canvas" height=380 width=500></svg>
 
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
+  console.log("hello world");
+
+  var svg = d3.select("#canvas")
+
+  svg.append("rect")
+    .attr("width", 500).attr("height", 380).style("fill", "#4b7a6b");
+
+  // so many circles
+
+  svg.append("circle")
+    .attr("cx", 280).attr("cy", 20).attr("r", 40).style("fill", "#254159").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 280).attr("cy", 60).attr("r", 50).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 300).attr("cy", 80).attr("r", 40).style("fill", "#22324f").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 290).attr("cy", 120).attr("r", 40).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 300).attr("cy", 150).attr("r", 50).style("fill", "#22324f").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 310).attr("cy", 180).attr("r", 50).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 300).attr("cy", 200).attr("r", 45).style("fill", "#275249").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 330).attr("cy", 200).attr("r", 45).style("fill", "#193630").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 360).attr("cy", 20).attr("r", 40).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 340).attr("cy", 50).attr("r", 40).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 350).attr("cy", 80).attr("r", 40).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 370).attr("cy", 120).attr("r", 50).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 380).attr("cy", 160).attr("r", 50).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 390).attr("cy", 200).attr("r", 60).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 410).attr("cy", 220).attr("r", 50).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 360).attr("cy", 220).attr("r", 40).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 480).attr("cy", 150).attr("r", 100).style("fill", "#266642").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 470).attr("cy", 50).attr("r", 110).style("fill", "#46a65a").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 500).attr("cy", 90).attr("r", 110).style("fill", "#1c3d2b").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 500).attr("cy", 110).attr("r", 80).style("fill", "#356e4f").style("opacity", .8);
+  
+  svg.append("circle")
+    .attr("cx", 330).attr("cy", 220).attr("r", 30).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 290).attr("cy", 220).attr("r", 60).style("fill", "#4c8f69").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 460).attr("cy", 220).attr("r", 70).style("fill", "#4c8f69").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 480).attr("cy", 200).attr("r", 70).style("fill", "#5cbf87").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 190).attr("cy", 100).attr("r", 40).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 220).attr("cy", 120).attr("r", 40).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 190).attr("cy", 140).attr("r", 40).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 210).attr("cy", 160).attr("r", 50).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 210).attr("cy", 180).attr("r", 50).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 215).attr("cy", 200).attr("r", 45).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 215).attr("cy", 220).attr("r", 45).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 500).attr("cy", 230).attr("r", 80).style("fill", "#6ce077").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 510).attr("cy", 270).attr("r", 80).style("fill", "#426e46").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 150).attr("cy", 100).attr("r", 40).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 160).attr("cy", 120).attr("r", 40).style("fill", "#275249").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 150).attr("cy", 140).attr("r", 40).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 170).attr("cy", 160).attr("r", 50).style("fill", "#467352").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 170).attr("cy", 180).attr("r", 50).style("fill", "#193630").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 175).attr("cy", 200).attr("r", 45).style("fill", "#467352").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 175).attr("cy", 220).attr("r", 45).style("fill", "#193630").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 110).attr("cy", 120).attr("r", 40).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 80).attr("cy", 140).attr("r", 40).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 100).attr("cy", 160).attr("r", 50).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 100).attr("cy", 180).attr("r", 50).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 105).attr("cy", 200).attr("r", 45).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 105).attr("cy", 220).attr("r", 45).style("fill", "#7ede6d").style("opacity", .8);
+
+    //lake background
+  svg.append("circle")
+    .attr("cx", 250).attr("cy", 610).attr("r", 370).style("fill", "#365241").style("opacity", .8);
+  
+  svg.append("circle")
+    .attr("cx", 260).attr("cy", 230).attr("r", 45).style("fill", "#8cb056").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 230).attr("cy", 230).attr("r", 35).style("fill", "#a0d158").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 180).attr("cy", 240).attr("r", 45).style("fill", "#254f1b").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 130).attr("cy", 250).attr("r", 40).style("fill", "#77b854").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 300).attr("cy", 240).attr("r", 45).style("fill", "#b5d46c").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 340).attr("cy", 240).attr("r", 45).style("fill", "#2c6338").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 390).attr("cy", 260).attr("r", 55).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 430).attr("cy", 300).attr("r", 55).style("fill", "#2d4014").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 470).attr("cy", 310).attr("r", 50).style("fill", "#184014").style("opacity", .8);
+
+  svg.append("circle")
+    .attr("cx", 30).attr("cy", 40).attr("r", 50).style("fill", "#38522a").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 30).attr("cy", 80).attr("r", 60).style("fill", "#284f3f").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 80).attr("cy", 70).attr("r", 50).style("fill", "#4f9e56").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 60).attr("cy", 60).attr("r", 40).style("fill", "#305c34").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 100).attr("cy", 40).attr("r", 50).style("fill", "#62a155").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 140).attr("cy", 40).attr("r", 50).style("fill", "#315935").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 180).attr("cy", 30).attr("r", 50).style("fill", "#598f6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 200).attr("cy", 25).attr("r", 40).style("fill", "#7ec96d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 210).attr("cy", 60).attr("r", 30).style("fill", "#508c5f").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 230).attr("cy", 20).attr("r", 30).style("fill", "#69a85b").style("opacity", .8);
+    
+  // actual technical stuff (bridge elements)
+
+  var points = [[0,250],[250,100],[500,250]];
+  var radius = 600;
+  
+  var path_bridge = d3.path();
+  path_bridge.moveTo(points[0][0], points[0][1]);
+  path_bridge.arcTo(points[1][0], points[1][1], points[2][0], points[2][1], radius)
+  path_bridge.lineTo(points[2][0], points[2][1])
+
+  var y = -45;
+  var railing_1 = d3.path();
+  railing_1.moveTo(points[0][0], points[0][1]+y);
+  railing_1.arcTo(points[1][0], points[1][1]+y, points[2][0], points[2][1]+y, radius)
+  railing_1.lineTo(points[2][0], points[2][1]+y)
+
+  var y2 = y-45;
+  var railing_2 = d3.path();
+  railing_2.moveTo(points[0][0], points[0][1]+y2);
+  railing_2.arcTo(points[1][0], points[1][1]+y2, points[2][0], points[2][1]+y2, radius)
+  railing_2.lineTo(points[2][0], points[2][1]+y2)
+
+  svg.append("path")
+    .attr("d", path_bridge)
+    .attr("stroke", "#8698b8")
+    .attr("stroke-width", 20)
+    .attr("stroke-opacity", .9)
+    .attr("fill", "none");
+
+  svg.append("path")
+    .attr("d", railing_1)
+    .attr("stroke", "#a8eddb")
+    .attr("stroke-width", 10)
+    .attr("stroke-opacity", .75)
+    .attr("fill", "none");
+
+  svg.append("path")
+    .attr("d", railing_2)
+    .attr("stroke", "#a8eddb")
+    .attr("stroke-width", 10)
+    .attr("stroke-opacity", .75)
+    .attr("fill", "none");
+
   // Add Lines
-  // Add Polygons
+  svg.append("line")
+    .attr("x1", 200).attr("y1", 100).attr("x2", 200).attr("y2", 193).style("stroke", "#a8eddb").style("stroke-width", 10).attr("stroke-opacity", .75);
+  svg.append("line")
+    .attr("x1", 310).attr("y1", 103).attr("x2", 310).attr("y2", 193).style("stroke", "#a8eddb").style("stroke-width", 10).attr("stroke-opacity", .75);
+  svg.append("line")
+    .attr("x1", 420).attr("y1", 125).attr("x2", 420).attr("y2", 215).style("stroke", "#a8eddb").style("stroke-width", 10).attr("stroke-opacity", .75);
+
+  //moreee circles for over bridge
+
+  svg.append("circle")
+    .attr("cx", 30).attr("cy", 120).attr("r", 40).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 40).attr("cy", 140).attr("r", 40).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 45).attr("cy", 160).attr("r", 50).style("fill", "#458050").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 40).attr("cy", 180).attr("r", 50).style("fill", "#7ede6d").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 45).attr("cy", 200).attr("r", 45).style("fill", "#8cc981").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 40).attr("cy", 230).attr("r", 60).style("fill", "#839c48").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 40).attr("cy", 260).attr("r", 60).style("fill", "#3c6e55").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 40).attr("cy", 280).attr("r", 50).style("fill", "#4f964b").style("opacity", .8);
+  svg.append("circle")
+    .attr("cx", 20).attr("cy", 300).attr("r", 50).style("fill", "#76ad5e").style("opacity", .8);
+
+  //pond rectangles!
+
+  svg.append("rect")
+  .attr("x", 90).attr("y", 270).attr("width", 40).attr("height", 30).style("fill", "#518f89").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 120).attr("y", 260).attr("width", 40).attr("height", 30).style("fill", "#579976").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 150).attr("y", 260).attr("width", 40).attr("height", 30).style("fill", "#2b6647").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 180).attr("y", 260).attr("width", 40).attr("height", 30).style("fill", "#265248").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 210).attr("y", 260).attr("width", 40).attr("height", 25).style("fill", "#457359").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 240).attr("y", 260).attr("width", 40).attr("height", 25).style("fill", "#679c71").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 270).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#7fc97d").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 300).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#446e60").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 320).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#31543e").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 340).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#1f382f").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 370).attr("y", 320).attr("width", 40).attr("height", 25).style("fill", "#3f5e59").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 390).attr("y", 340).attr("width", 40).attr("height", 25).style("fill", "#293d34").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 410).attr("y", 350).attr("width", 40).attr("height", 25).style("fill", "#1a2b21").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 440).attr("y", 350).attr("width", 40).attr("height", 25).style("fill", "#253d2f").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 470).attr("y", 350).attr("width", 40).attr("height", 25).style("fill", "#203330").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 70).attr("y", 285).attr("width", 40).attr("height", 30).style("fill", "#4c8f61").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 100).attr("y", 285).attr("width", 40).attr("height", 30).style("fill", "#6db366").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 130).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#8fcf6d").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 160).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#538737").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 190).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#78bf52").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 220).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#5d8746").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 250).attr("y", 280).attr("width", 40).attr("height", 25).style("fill", "#5b8744").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 70).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#224d49").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 100).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#54838f").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 130).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#63828a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 160).attr("y", 295).attr("width", 40).attr("height", 25).style("fill", "#3d5957").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 190).attr("y", 295).attr("width", 40).attr("height", 25).style("fill", "#598f8b").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 220).attr("y", 295).attr("width", 40).attr("height", 25).style("fill", "#4c876f").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 250).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#408551").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 280).attr("y", 300).attr("width", 40).attr("height", 25).style("fill", "#355e49").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 50).attr("y", 320).attr("width", 40).attr("height", 25).style("fill", "#2f5248").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 80).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#173836").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 110).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#296662").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 140).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#254f3c").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 170).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#38805f").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 200).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#4dab64").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 230).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#77cc6a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 260).attr("y", 310).attr("width", 40).attr("height", 25).style("fill", "#4a8d9e").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 290).attr("y", 310).attr("width", 40).attr("height", 25).style("fill", "#306573").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 320).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#19404a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 350).attr("y", 315).attr("width", 40).attr("height", 25).style("fill", "#1c4a45").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 0).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#1c4a45").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 30).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#34785e").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 60).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#4ea67a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 90).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#58ada8").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 120).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#477d7a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 150).attr("y", 325).attr("width", 40).attr("height", 25).style("fill", "#62a6a2").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 180).attr("y", 325).attr("width", 40).attr("height", 25).style("fill", "#439994").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 210).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#275c47").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 240).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#337d56").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 270).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#409166").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 300).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#206131").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 330).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#1b4232").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 360).attr("y", 335).attr("width", 40).attr("height", 25).style("fill", "#143835").style("opacity", .8)
+  svg.append("rect")
+  .attr("x", 0).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#143835").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 30).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#2b6963").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 60).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#47947a").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 90).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#63ba81").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 120).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#69ba63").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 150).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#87e681").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 180).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#93c773").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 210).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#65b598").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 240).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#4a8a73").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 270).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#69b3af").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 300).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#6896a1").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 330).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#466d85").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 360).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#314857").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 390).attr("y", 355).attr("width", 40).attr("height", 25).style("fill", "#345266").style("opacity", .8);
+  svg.append("rect")
+  .attr("x", 420).attr("y", 365).attr("width", 40).attr("height", 25).style("fill", "#203f54").style("opacity", .8);
+
+  //flowers
+  svg.append("circle")
+    .attr("cx", 150).attr("cy", 350).attr("r", 10).style("fill", "#e1bee8").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 130).attr("cy", 300).attr("r", 8).style("fill", "#e3d8e6").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 260).attr("cy", 320).attr("r", 12).style("fill", "#e1bee8").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 300).attr("cy", 310).attr("r", 10).style("fill", "#e1bee8").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 90).attr("cy", 360).attr("r", 12).style("fill", "#e3d8e6").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 280).attr("cy", 350).attr("r", 10).style("fill", "#e3d8e6").style("opacity", .8);
+    svg.append("circle")
+    .attr("cx", 400).attr("cy", 350).attr("r", 8).style("fill", "#e1bee8").style("opacity", .8);
+
 </script>
