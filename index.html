@@ -6,7 +6,7 @@ These are the circles, try to click on them!
 
 <script>
 d3.selectAll('#p1')
-    .style('color', 'RoyalBlue');
+    .style('color', '#F28308');
 </script>
 
 <svg id="map1" width=300 height=350>
@@ -36,7 +36,7 @@ var sel = d3.select('#map1')
 		.attr('cx', function(d) { return linscale(d) + 120; })
 		.attr('cy', function(d) { return linscale(d) + 230; })
 		.attr('r', function(d) { return linscale(d) + 7; })
-		.attr('fill', 'DeepSkyBlue');
+		.attr('fill', '	#FFD900');
     	})
 </script>
 
@@ -51,7 +51,7 @@ d3.selectAll('#p2')
 </script>
 
 
-<svg id="map2" width=250 height=250>
+<svg id="map2" width=250 height=280>
 </svg>
 
 
@@ -125,11 +125,11 @@ This is the line
 
 <script>
 d3.selectAll('#p3')
-    .style('color', '#ff6347');
+    .style('color', '#DC143C');
 </script>
 
 
-<svg id="map3" width=300 height=130>
+<svg id="map3" width=300 height=80>
 </svg>
 
 <script>
@@ -195,8 +195,10 @@ d3.select('#map3')
 		d3.select(this)
           		.transition()
 		.duration(500)
-		.attr("stroke", "green")
-		.attr("stroke-width", "9px");
+	.attr("x1", dataset[0]+20)
+	.attr("y1", dataset[3]+50)
+	.attr("x2", dataset[2]+20)
+	.attr("y2", dataset[3]+50)
 });
 
 </script>
@@ -210,72 +212,98 @@ This is the path, it looks like a butterfly (or a flower ^_^)
 
 <script>
 d3.selectAll('#p4')
-    .style('color', 'HotPink');
+    .style('color', 'DeepPink');
 </script>
 
 
-<svg id='map4' width="300" height="300">
+<svg id='map4' width="500" height="200">
 
       <path d=" M 15 10
 
                 S 15 80 65 80"
 
-                stroke="#410868" stroke-width="1.5" fill="none" />
+                stroke="#6F0B6A" stroke-width="1.5" fill="none" />
 
 <path d=" M 65 80
 
 	S 115 80 115 10"
 
-                stroke="#660CA4" stroke-width="2" fill="none" />
+                stroke="#AA12A3" stroke-width="2" fill="none" />
 
 <path d=" M 115 10
 
 	S 65 10 65 80"
 
-                stroke="#9716EE" stroke-width="2.5" fill="none" />
+                stroke="#D816CF" stroke-width="2.5" fill="none" />
 
 <path d=" M 65 80
 
 	S 65 150 115 150"
 
-                stroke="#AF4CF2" stroke-width="3" fill="none" />
+                stroke="#EB41E3" stroke-width="3" fill="none" />
 
 <path d=" M 115 150
 
 	S 155 80 65 80"
 
-                stroke="#CE91F7" stroke-width="3.5" fill="none" />
+                stroke="#EF63E8" stroke-width="3.5" fill="none" />
 
 <path d=" M 65 80
 
 	S -25 80 15 150"
 
-                stroke="#DFB8FA" stroke-width="4" fill="none" />
+                stroke="#F49AF0" stroke-width="4" fill="none" />
 
 <path d=" M 15 150
 
 	S 65 150 65 80"
 
-                stroke="#E7C9FB" stroke-width="4.5" fill="none" />
+                stroke="#F7B7F4" stroke-width="4.5" fill="none" />
 
 <path d=" M 65 80
 
 	S 65 10 15 10"
 
-                stroke="#F4E7FD" stroke-width="5" fill="none" />
+                stroke="#FCE0FB" stroke-width="5" fill="none" />
 
     </svg>
 
+
+
+<p id="p5">
+This is the WindMill, click the button to rotate it! </br>
+You can try to click the button again to make it rotate faster.
+</p>
+
 <script>
-
-d3.selectAll('#map4')
-	.on('click', function(event) {
-		d3.select(this)
-          		.transition()
-		.duration(500)
-		.attr('stroke', 'green')
-});
-
+d3.selectAll('#p5')
+    .style('color', '#266CDE');
 </script>
 
+<svg id="WindMill" width=300 height=300>
 
+<polygon points="50,50 50,150 150,150" style="fill:#C0E1F6; stroke:#C0E1F6;stroke-width:1"/>
+<polygon points="150,50 250,50 150,150" style="fill:#89C8EF; stroke:#89C8EF;stroke-width:1"/>
+<polygon points="250,250 250,150 150,150" style="fill:#4BACE7; stroke:#4BACE7;stroke-width:1"/>
+<polygon points="50,250 150,250 150,150" style="fill:#1C8DD2; stroke:#1C8DD2;stroke-width:1"/>
+
+</svg>
+
+	<button id="rotate" 
+		d3.selectAll('#WindMill')
+		onclick="startAnimation();">Click to Rotate
+	</button>
+
+	<script>
+        var WindMill;
+        function startAnimation() {
+            WindMill = document.getElementById("WindMill");
+            WindMill.currentTheta = 0;
+            setInterval("animateImage()",10);
+        }
+        function animateImage() 
+        {
+            WindMill.setAttribute("transform", "rotate(" + WindMill.currentTheta + ")");
+            WindMill.currentTheta += 1;
+        }
+    </script>
