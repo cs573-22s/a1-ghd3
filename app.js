@@ -2,7 +2,7 @@
 var svg = d3.select("body")
     .append("svg")
     .attr("width", 1000)
-    .attr("height", 500);
+    .attr("height", 400);
 //.style('background-color', 'lightgrey');
 
 var circle = svg.append("circle")
