@@ -1,10 +1,135 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+
+<p>
+<br>Sarah J. Weintraub
+<br>BCB502 Assignment 1
+<br>January 21, 2022
+</p>
+
+
+<svg id="rectangle" width=1000 height=1000>
+</svg>
+
+<svg id="circles" width=1000 height=800>
+</svg>
+
+<svg id="lines" width=800 height=100>
+</svg>
+
+<svg id="paths" width="800" height="400">
+</svg>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+var points = [0,25,50,75,100];
+
+  var linscale = d3.scaleLinear()
+    .domain([0, 100]) // unit: km
+    .range([30, 770]) // unit: pixels
+
+
+// rectangles
+
+var sel = d3.select('#rectangle')
+    .selectAll('rect')
+    .data(points)
+    .enter().append('rect')
+    .attr('x', function(d) { return linscale(d); })
+    .attr('y', function(d) { return linscale(d); })
+    .attr('width', 30)
+    .attr('height', 10)
+    .attr('id', function(d, i) { return 'rect'+i; })
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('y', function(d) { return linscale(d) + 50; })
+          .attr('fill', 'Brown');
+    })
+
+    d3.select('#rect2')
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('y', function(d) { return linscale(d) - 100; })
+          .attr('fill', 'Teal')
+      });
+
+
+
+
+
+
+// circles
+
+var sel = d3.select('#circles')
+    .selectAll('circle')
+    .data(points)
+    .enter().append('circle')
+    .attr('cx', function(d) { return linscale(d); })
+    .attr('cy', function(d) { return linscale(d); })
+    .attr('r', 10)
+    .attr('id', function(d, i) { return 'rect'+i; })
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('cx', function(d) { return linscale(d) + 200; })
+          .attr('fill', 'LightCoral');
+    });
+
+
+
+
+
+
+// Lines
+
+var sel = d3.select('#lines')
+    .selectAll('line')
+    .data(points)
+    .enter().append('line')
+    .attr('x1',1)
+    .attr('y1',50)
+    .attr('x2',800)
+    .attr('y2',50)
+    .attr('stroke', 'RebeccaPurple');
+
+
+
+
+
+
+// Paths
+
+var symbolGenerator = d3.symbol()
+        .type(d3.symbolStar)
+        .size(80);
+
+var points = [
+        [20, 80],
+        [100, 100],
+        [250, 30],
+        [400, 50],
+        [600, 40],
+        [750, 80]
+];
+
+var pathData = symbolGenerator();
+
+d3.select('#paths')
+        .selectAll('path')
+        .data(points)
+        .join('path')
+        .attr('transform', function(d) {
+                return 'translate(' + d + ')';
+        })
+        .attr('d', pathData)
+        .attr('fill', 'gold');
+
 </script>
