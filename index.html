@@ -1,10 +1,112 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg id="svg" width=500 height=500>
+</svg>
+
+<b class="title">
+  Assignment 1
+</b>
+
+
 <script>
   console.log(d3); // test if d3 is loaded
+  var dataset = [73, 18, 56, 38, 4];
+  var dataset2 = [100];
+  var squareData = [0];
+  var square2 = [50];
+  var path = d3.path()
+  var rotation = 0;
+
+  path.moveTo(200,200);
+  path.lineTo(300,200);
+  path.lineTo(300,300);
+  path.closePath(); 
+
+  d3.selectAll('b')
+  .style('color', 'black')
+  .style('font-family', 'verdana');
+  
+  d3.selectAll("b").on("click", function(event) {
+        d3.select(this).style("color", "lavender");
+    });
+
   // Add an SVG
-  // Add Rectangles
+
+    // Add Lines
+    //https://webdva.github.io/how-to-draw-a-line-in-d3js/
+
+    let line = d3.select('#svg')
+        .attr('width', 400)
+        .attr('height', 400)
+
+    line.append('line')
+        .style("stroke", "steelblue")
+        .style("stroke-width", 5)
+        .attr("x1", 100)
+        .attr("y1", 200)
+        .attr("x2", 50)
+        .attr("y2", 300)
+        ;
+        
+
+    // Add Rectangle
+    
+var sel = d3.select('#svg')
+        .selectAll('rect')
+        .data(squareData)
+        .enter().append('rect')
+        .attr('x', function(d) { return d;})
+        .attr('y', function(d) { return d;})
+        .attr('height', 50)
+        .attr('width', 80)
+        .style("fill", "green")
+        .attr('id', function(d, i) { return 'rect'+i; })
+        .on("click", function(){d3.select(this).style("fill", "magenta");
+      })
+
+    console.log(sel);
+
+
   // Add Circles
-  // Add Lines
-  // Add Polygons
+
+  var linscale = d3.scaleLinear()
+    .domain([0, 100]) // unit: km
+    .range([50, 400]) // unit: pixels
+
+    var cir = d3.select('#svg')
+        .selectAll('circle')
+        .data(dataset2)
+        .enter().append('circle')
+        .attr('cx', function(d) { return d;})
+        .attr('cy', function(d) { return d;})
+        .attr('r', 50)
+        .style('fill', 'red')
+        .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(5000)
+          .ease(d3.easeLinear)
+          .attr('cy', function(d) { return linscale(d) + 100; });
+    })
+
+    console.log(sel);
+
+    var cir = d3.select('#svg')
+        .selectAll('circle')
+        .data(dataset)
+        .enter().append('circle')
+        .attr('cx', function(d) { return d;})
+        .attr('cy', function(d) { return d;})
+        .attr('r', 5)
+        .style('fill', 'black');
+
+    var path = d3.select('#svg')
+        .append("path")
+         .attr("d", path)
+        .attr("stroke", "black")
+        .attr("fill", "teal")
+        .on("click", function(){d3.select(this).style("stroke", "red");
+  })
+    
 </script>
+
