@@ -54,4 +54,9 @@ Design Achievement Description
 2. Offer a range of color palette for users to choose from
 3. Circles are aligned specifically to achieve an artistic feeling.
 
+Citation
+---
+
+1. https://www.d3-graph-gallery.com/graph/custom_color.html
+2. https://css-tricks.com/snippets/javascript/random-hex-color/
 
