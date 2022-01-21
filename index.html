@@ -22,14 +22,14 @@ var hoverCounter = 0;
 document.getElementById("counter").innerHTML = clickCounter +" Color: "  + "lightblue";
 document.getElementById("counter2").innerHTML = hoverCounter +" Color: "  + "lightblue";
 var count = 0;
-var style = ['orange','lightblue'];
+var style = ['orange','lightblue','red','gray','green'];
 d3.selectAll('circle')
 .on('click', function(e, d) {
   d3.select(this)
-    .style('fill',style[count%2]);
+    .style('fill',style[count%5]);
     count++;
     clickCounter++;
-    document.getElementById("counter").innerHTML = clickCounter +" Color:"  + style[(count-1)%2];
+    document.getElementById("counter").innerHTML = clickCounter +" Color:"  + style[(count-1)%5];
 });
 var count2 = 0;
 var style2= ['orange','lightblue','red','gray','green'];
@@ -39,7 +39,7 @@ d3.selectAll('rect')
     .style('fill',style2[count2%5]);
     count2++;
     hoverCounter++;
-    document.getElementById("counter2").innerHTML = hoverCounter +" Color:"  + style2[(count2-1)%2];
+    document.getElementById("counter2").innerHTML = hoverCounter +" Color:"  + style2[(count2-1)%5];
 
 });
 
