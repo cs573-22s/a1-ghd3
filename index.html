@@ -1,10 +1,138 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<div id="canvas"></div>
+
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+    console.log(d3); // test if d3 is loaded
+    // Add an SVG
+    // Add Rectangles
+    // Add Circles
+    // Add Lines
+    // Add Polygons
+
+    const width = 500;
+    const height = 500;
+
+    const numPoints = 30;
+    const maxRadius = 30;
+    const minRadius = 10;
+    const colors = ["green", "purple", "blue", "red"];
+
+    const dataset = [];
+
+    // Fill dataset with randomly placed circles
+    buildDataset: while (dataset.length < numPoints) {
+        const x = maxRadius + (width - 2 * maxRadius) * Math.random();
+        const y = maxRadius + (height - 2 * maxRadius) * Math.random();
+        const radius = minRadius + (maxRadius - minRadius) * Math.random();
+        const color = colors[0 | (colors.length * Math.random())];
+
+        for (const circle of dataset) {
+            const distSquared = (x - circle.x) * (x - circle.x) + (y - circle.y) * (y - circle.y);
+
+            if (distSquared < 4 * maxRadius * maxRadius) {
+                continue buildDataset;
+            }
+        }
+
+        dataset.push({x, y, radius, color});
+    }
+
+    console.log(dataset);
+
+    // Create a new canvas within the provided element
+    const canvas = d3.select("#canvas")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Add the created circles to the image
+    canvas.selectAll("circle")
+        .data(dataset)
+        .enter()
+        .append("")
+        // .append("circle")
+        .attr("r", x => x.radius)
+        .attr("cx", x => x.x)
+        .attr("cy", x => x.y)
+        .attr("fill", x => x.color);
+
+
+    /**
+     * Method to determine if two line segments intersect
+     * Source: https://stackoverflow.com/a/9997374/5987669
+     */
+    function intersects(a, b, c, d) {
+        function ccw(a, b, c) {
+            return (c.y - a.y) * (b.x - a.x) > (b.y - a.y) * (c.x - a.x);
+        }
+
+        return ccw(a, c, d) !== ccw(b, c, d) && ccw(a, b, c) !== ccw(a, b, d);
+    }
+
+
+    const lines = [];
+
+    for (let a = 0; a < dataset.length - 1; a++) {
+        check: for (let b = a + 1; b < dataset.length; b++) {
+            const ca = dataset[a];
+            const cb = dataset[b];
+            const hypot2 = (ca.x - cb.x) * (ca.x - cb.x) + (ca.y - cb.y) * (ca.y - cb.y);
+
+            for (let i = 0; i < lines.length; i++) {
+                if (intersects(ca, cb, lines[i].ca, lines[i].cb)) {
+                    // Check for false positive where segments share a point
+                    if (ca === lines[i].ca || ca === lines[i].cb || cb === lines[i].ca || cb === lines[i].cb) {
+                        continue;
+                    }
+
+                    if (hypot2 < lines[i].hypot2) {
+                        // If this line is shorter it takes priority and bumps the other line out
+                        lines.splice(i, 1);
+                        i--;
+                    } else {
+                        // An existing line is shorter and is a better candidate for this position
+                        continue check;
+                    }
+                }
+            }
+
+            lines.push({ca, cb, hypot2});
+        }
+    }
+
+    // Ensure lines don't enter circles because why not
+    const circleBorder = 5;
+    for (const line of lines) {
+        // Calculate a unit vector from ca to cb
+        const length = Math.sqrt(line.hypot2);
+        const ux = (line.cb.x - line.ca.x) / length;
+        const uy = (line.cb.y - line.ca.y) / length;
+
+        // Adjust end points to not overlap with circles
+        line.ca = {
+            ...line.ca,
+            x: line.ca.x + ux * (circleBorder + line.ca.radius),
+            y: line.ca.y + uy * (circleBorder + line.ca.radius),
+        };
+        line.cb = {
+            ...line.cb,
+            x: line.cb.x - ux * (circleBorder + line.cb.radius),
+            y: line.cb.y - uy * (circleBorder + line.cb.radius),
+        };
+    }
+
+    // Add the connecting lines
+    canvas.selectAll("line")
+        .data(lines)
+        .enter()
+        .append("line")
+        .attr("x1", x => x.ca.x)
+        .attr("x2", x => x.cb.x)
+        .attr("y1", x => x.ca.y)
+        .attr("y2", x => x.cb.y)
+        .attr("stroke", "black")
+        .attr("stroke-width", 5);
+
+
 </script>
