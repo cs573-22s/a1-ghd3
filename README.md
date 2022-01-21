@@ -6,8 +6,8 @@ For this assignemnt I started by testing out how to create differnt shapes, firs
 Link to page: https://jcybul.github.io/a1-ghd3/
 
 * Screenshot of the page when its first opend.
-![plot](./a1-ghd3/landing.png)
+![plot](a1-ghd3/landing.png)
 
 * Screenshot of the page after some changes.
-![plot](./a1-ghd3/landing2.png)
+![plot](a1-ghd3/landing2.png)
 
