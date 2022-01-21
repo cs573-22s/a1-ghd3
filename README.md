@@ -24,6 +24,7 @@ Technical Achievements
 - Make changes to index.html to fulfill the project requirements. 
 - Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
 - Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
+
 Design Achievements
 ---
 - During the movement of the 'blue butterfly', the size of the figure will become smaller and smaller. And the color of it will change into red.
