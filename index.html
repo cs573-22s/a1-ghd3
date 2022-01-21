@@ -1,8 +1,6 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <h1>Assignment 1 - Joseph Cybul</h1>
 <h2 id = "counter"></h2>
-
-
 <svg> 
 <circle class="target" style="fill: lightblue" stroke="black" cx=50 cy=50 r=40></circle></svg>
 <h2>Click on the circle to change its color</h2>
@@ -10,6 +8,7 @@
 <rect x=20 y=10 style="fill: lightblue" stroke="black"  width="200" height="200"></rect>>
 </svg>
 <h2>Hover over the rectangle to change its color</h2>
+<h2 id = "counter2"></h2>
 <svg> 
 <line x1="10" y1="300" x2="100" y2="20" stroke="red"></svg>
 <svg>
@@ -18,9 +17,10 @@
 
 
 <script>
-
 var clickCounter = 0;
 var hoverCounter = 0;
+document.getElementById("counter").innerHTML = clickCounter +" Color: "  + "lightblue";
+document.getElementById("counter2").innerHTML = hoverCounter +" Color: "  + "lightblue";
 var count = 0;
 var style = ['orange','lightblue'];
 d3.selectAll('circle')
@@ -39,6 +39,7 @@ d3.selectAll('rect')
     .style('fill',style2[count2%5]);
     count2++;
     hoverCounter++;
+    document.getElementById("counter").innerHTML = hoverCounter +" Color:"  + style2[(count2-1)%2];
 
 });
 
