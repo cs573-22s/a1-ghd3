@@ -26,11 +26,11 @@ d3.selectAll('circle')
     count++;
 });
 var count2 = 0;
-var style2= ['orange','lightblue'];
+var style2= ['orange','lightblue','red','gray','green'];
 d3.selectAll('rect')
 .on('mouseover', function(e, d) {
   d3.select(this)
-    .style('fill',style2[count2%2]);
+    .style('fill',style2[count2%5]);
     count2++;
 });
 
