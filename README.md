@@ -1,7 +1,7 @@
 # CS573 Assignment 1 - Hello World using D3
 
 ## Link
-Live url
+Live url: http://johvanniperez.github.io/a1-ghd3/index.html
 
 ## Inspiration & Motivation
 I began my project by exploring online cool projects that utilize javascript and d3. I mainly came across projects from codepen that were coded mostly using javascript/css/html, but I gave them all a look so that I could begin generating ideas of what I wanted to accomplish for this assignment. Here are some links that I found cool and interesting and that motivated the concept behind my project.
@@ -11,7 +11,9 @@ I began my project by exploring online cool projects that utilize javascript and
 I didn't use any of the above links for source code with the exception of using the image of the boy which was retrieved from the second link.
 
 ## ScreenShots
-
+![Screenshot1](https://github.com/johvanniperez/a1-ghd3/blob/a1-johvanniperez-Johvanni-Perez/a1_day.png)
+![Screenshot2](https://github.com/johvanniperez/a1-ghd3/blob/a1-johvanniperez-Johvanni-Perez/a1_shapes.png)
+![Screenshot3](https://github.com/johvanniperez/a1-ghd3/blob/a1-johvanniperez-Johvanni-Perez/a1_night.png)
 ## Technical Achievements
 - Animating the shapes so that they can transitions
 - Creating functions for the on-click functionality of the buttons
