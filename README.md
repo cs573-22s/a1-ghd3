@@ -1,8 +1,14 @@
 Assignment 1 - Hello World: GitHub and d3  
 ===
-Link to project: https://github.com/124135417/a1-ghd3
+Link to project: https://124135417.github.io/a1-ghd3/
 
 Screenshot:
+
+https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot1.png
+
+https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot2.png
+
+https://raw.githubusercontent.com/124135417/a1-ghd3/master/Screenshot3.png
 
 Project Description:
 
