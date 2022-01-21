@@ -29,7 +29,7 @@ d3.selectAll('circle')
     .style('fill',style[count%2]);
     count++;
     clickCounter++;
-    document.getElementById("counter").innerHTML = clickCounter;
+    document.getElementById("counter").innerHTML = clickCounter +" Color:"  + style[(count-1)%2];
 });
 var count2 = 0;
 var style2= ['orange','lightblue','red','gray','green'];
