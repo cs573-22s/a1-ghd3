@@ -23,6 +23,19 @@ d3.select('svg')
   .attr('stroke', 'black')
   .attr('fill', 'orange');
 
+// cat ears
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 130 190 L 220 190 L 185 110 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'brown');
+
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 770 190 L 870 190 L 810 110 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'brown');
+
 // cat right eye
 d3.select('svg')
   .append('circle')
@@ -59,6 +72,55 @@ d3.select('svg')
   .attr('d', 'M 475 400 L 525 400 L 500 450 Z')
   .attr('stroke', 'black')
   .attr('fill', 'red');
+
+// cat whiskers
+d3.select('svg')
+  .append('line')
+  .attr('x1', 350)
+  .attr('x2', 100)
+  .attr('y1', 500)
+  .attr('y2', 490)
+  .attr('stroke', 'black');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 650)
+  .attr('x2', 900)
+  .attr('y1', 500)
+  .attr('y2', 490)
+  .attr('stroke', 'black');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 350)
+  .attr('x2', 150)
+  .attr('y1', 550)
+  .attr('y2', 600)
+  .attr('stroke', 'black');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 650)
+  .attr('x2', 850)
+  .attr('y1', 550)
+  .attr('y2', 600)
+  .attr('stroke', 'black');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 325)
+  .attr('x2', 150)
+  .attr('y1', 525)
+  .attr('y2', 545)
+  .attr('stroke', 'black');
+
+d3.select('svg')
+  .append('line')
+  .attr('x1', 675)
+  .attr('x2', 850)
+  .attr('y1', 525)
+  .attr('y2', 545)
+  .attr('stroke', 'black');
 
 // cat tongue
 d3.select('svg')
