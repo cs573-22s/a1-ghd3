@@ -1,0 +1,222 @@
+
+
+Assignment 1 ~ CS 573 ~ Nick Tourtillott
+
+<!Intro>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<p class = 'visclass'>
+Hi, My name is Nick, a senior BS/MS student in the BCB program. I don't really know what's happening.
+I've never worked in html before so please bare with me. However, I'd like to take this chance to speak about myself.
+</p>
+
+<script>
+
+console.log('Free Me');
+console.log(d3);
+
+</script>
+
+<!Interests-- ft. rectangles, paths, and lines>
+
+<p class = 'interests'>
+Alright, I guess we should start with my interests and hobbies.
+I find that I spend most of my time listening to music, playing video games, and on youtube.
+When not doing that I love hanging out with my friends, especially playing D&D.
+I guess to say that my favorite music artist is Ashnikko.
+For video games, my favorite is the Dragon Age Series as a whole or the recent remake of Final Fantasy VII.
+But, the real overlap of all of these is a web series called critical role.
+
+So click the buttons below and you'll see my best attempt at a drawing of the Vox Machina logo (the adventuring party featured in Critical Role Campaign 1 and my personal favorite)
+and a drawing of the play station symbols (since that is my platform of choice when gaming).
+</p>
+<svg width ='600' height = '400' class = 'rectangles'>
+</svg>
+
+
+<script>
+d3.select('.interests')
+  .style('color', 'green')
+
+var buttonData = [{x: 120, y: 10}, {x: 120, y: 320}];
+
+var VoxMachinaData = [{x1:120, y1:30, x2:70, y2:80}, {x1:70, y1:80, x2:95, y2:130},
+{x1:95, y1:130, x2:145, y2:130}, {x1:145, y1:130, x2:170, y2:80}, {x1:170, y1:80, x2:120, y2:30},
+{x1:120, y1: 30, x2: 90, y2: 60}, {x1:90, y1: 60, x2: 120, y2: 110}, {x1:120, y1: 110, x2: 150, y2: 60},
+{x1:150, y1: 60, x2: 170, y2: 80}, {x1:170, y1: 80, x2: 145, y2: 130}, {x1:145, y1: 130, x2: 145, y2: 85},
+{x1:145, y1: 85, x2: 120, y2: 120}, {x1:120, y1: 120, x2:95 , y2: 85}, {x1:95, y1: 85, x2: 95, y2: 130}
+];
+
+var sel = d3.select('.rectangles')
+          .selectAll('rect')
+          .data(buttonData)
+          .enter().append('rect')
+          .attr('x', function(d) {return d.x;})
+          .attr('y', function(d) {return d.y;})
+          .attr('width', 30)
+          .attr('height', 20)
+          .attr('fill', 'red')
+          .style("stroke", 'black')
+          .style('stroke-width', 2)
+          .attr('id', function(d, i) {return 'rect'+i;})
+
+        d3.select("#rect0")
+          .on('click', function(event){
+              d3.select(this)
+              .remove()
+            d3.select('.rectangles')
+                .selectAll('line')
+                .data(VoxMachinaData)
+                .enter().append('line')
+                .transition()
+                .duration(5000)
+                .style('stroke', 'black')
+                .style('stroke-width', 5)
+                .attr('x1', function(d) {return d.x1;})
+                .attr('y1', function(d) {return d.y1;})
+                .attr('x2', function(d) {return d.x2;})
+                .attr('y2', function(d) {return d.y2;});
+
+          })
+var tri = d3.symbol().type(d3.symbolTriangle).size(1500);
+var cross = d3.symbol().type(d3.symbolCross).size(1500);
+var square = d3.symbol().type(d3.symbolSquare).size(1500);
+          d3.select("#rect1")
+            .on('click', function(event){
+                d3.select(this)
+                .remove()
+              d3.select('.rectangles')
+                .append('circle')
+                .transition()
+                .duration(5000)
+                .attr('cx', 120)
+                .attr('cy', 350)
+                .attr('r', 30)
+                .style('stroke', 'pink')
+                .style('stroke-width', 5)
+                .attr('fill', 'none');
+              d3.select('.rectangles')
+                  .append('path')
+                  .transition()
+                  .duration(5000)
+                  .attr("d", tri)
+                  .style('stroke', 'green')
+                  .style('stroke-width', 5)
+                  .attr('fill', 'none')
+                  .attr("transform", "translate(50,350)")
+                  d3.select('.rectangles')
+                      .append('path')
+                      .transition()
+                      .duration(5000)
+                      .attr("d", cross)
+                      .style('stroke', 'blue')
+                      .style('stroke-width', 5)
+                      .attr('fill', 'none')
+                      .attr("transform", "translate(190,350)");
+                      d3.select('.rectangles')
+                          .append('path')
+                          .transition()
+                          .duration(5000)
+                          .attr("d", square)
+                          .style('stroke', 'red')
+                          .style('stroke-width', 5)
+                          .attr('fill', 'none')
+                          .attr("transform", "translate(260,350)");})
+
+
+
+
+
+</script>
+
+
+<!Career.....if you can call it that I guess-- ft. paths and circles>
+<p class = " career">
+Now more about me in a professional manner. Like I said I'm a BCB student here at WPI. I've done research in the past
+with Prof. Ryder and Prof. Korkin. In particular, with Prof. Korkin I've been working on two projects:
+one related to RNA Seq data and computational transfromations we could make to leverage that information in new ways,
+and the other being a ML model which can determine a company's environmental impact from solely their twitter feed (a first in the field).
+Additionally, I just finidhed an intership where I got to lead the analysis of a single cell RNA seq dataset related to patients with prostate cancer.
+It was really exciting work that lead to a couple of new discoveries that may lead to new therapeutics!
+So, to illustrate the core of my work I found it fitting to draw a chromosome (the compacted form of DNA in the Nucleus), just click the circle to see it.
+</p>
+
+<svg width ='600' height = '400' class = 'DNA'>
+</svg>
+
+
+<script>
+d3.select('.career')
+    .style('color', 'steelblue')
+var patha = d3.path()
+patha.moveTo
+patha.moveTo(80, 50)
+patha.bezierCurveTo(50, 120, 120, 170, 90, 200)
+
+var pathb = d3.path()
+pathb.moveTo
+pathb.moveTo(90, 50)
+pathb.bezierCurveTo(120, 120, 50, 170, 80, 200)
+
+
+var sel = d3.select('.DNA')
+  .append('circle')
+  .attr('cx', 120)
+  .attr('cy', 50)
+  .attr('r', 15)
+  .style('stroke', 'black')
+  .style('stroke-width', 2)
+  .attr('fill', 'red');
+
+  d3.select("circle")
+    .on('click', function(event){
+        d3.select(this)
+        .remove();
+        d3.select('.DNA')
+          .append('path')
+          .transition()
+          .duration(5000)
+          .attr('d', patha)
+          .style('stroke', 'blue')
+          .style('stroke-width', 1)
+          .attr("fill", "blue");
+          d3.select('.DNA')
+            .append('path').transition()
+            .duration(5000)
+            .attr('d', pathb)
+            .style('stroke', 'blue')
+            .style('stroke-width', 1)
+            .attr("fill", "blue");
+      })
+
+</script>
+
+<!The end-- ft. circles again>
+<p class = "end">
+Thanks for spending time getting to know me. Bye!!
+</p>
+
+<svg width ='600' height = '600' class = 'circles'>
+</svg>
+
+<script>
+  d3.select('.end')
+    .style('color', 'teal')
+
+var circleData = [ {x:60, y:60}, {x:70,y:65}, {x:80, y:70},
+{x:90, y:75}, {x:100, y:80}, {x:110, y:80}, {x:120, y:80},{x:160, y:60}, {x:150,y:65},
+{x:140, y:70}, {x:130, y:75}, {x: 100, y: 10}, {x: 130, y:10}]
+
+var sel = d3.select('.circles')
+  .selectAll('circle')
+  .data(circleData)
+  .enter().append('circle')
+  .transition()
+  .duration(5000)
+  .attr('cx', function(d) {return d.x;})
+  .attr('cy', function(d) {return d.y;})
+  .attr('r', 8)
+  .attr('fill','teal');
+
+
+</script>
