@@ -405,6 +405,20 @@ const ocean = svg11.append('g')
     .attr('x', 0)
     .attr('y', 500)
 
+const dolphin = svg11.append('text')
+    .attr('transform', data => 'translate(300,800)')
+    .attr('text-anchor', 'middle')
+    .attr('font-size', '3em')
+    .text(data => 'Dolphin')
+
+dolphin.transition()
+    .delay(10000)
+    .duration(7000)
+    .attr('transform', 'translate(300,500)')
+    .transition()
+    .duration(3000)
+    .attr('transform', 'translate(300,800)')
+
 const waveData = [{x: 0, y: 350}, {x: 100, y: 400}, {x: 200, y: 350}, {x: 300, y: 400}, {x: 400, y: 350}, {x: 500, y: 400}, {x: 600, y: 350}, {x: 700, y: 400}, {x: 800, y: 350}, {x: 900, y: 400}, {x: 1000, y: 350}];
 const waveData2 = [{x: 0, y: 250}, {x: 100, y: 200}, {x: 200, y: 250}, {x: 300, y: 200}, {x: 400, y: 250}, {x: 500, y: 200}, {x: 600, y: 250}, {x: 700, y: 200}, {x: 800, y: 250}, {x: 900, y: 200}, {x: 1000, y: 250}];
 
@@ -417,13 +431,31 @@ const waveFunc = d3.area()
 const waves = svg11.append('g')
 
 
-waves.append('path')
+const wave1 = waves.append('path')
     .attr('d', waveFunc(waveData))
     .attr('stroke', 'lightblue')
     .attr('fill', 'blue')
-waves.append('path')
+const wave2 = waves.append('path')
     .attr('d', waveFunc(waveData2))
     .attr('stroke', 'lightblue')
     .attr('fill', 'blue')
 
+function wavesWaving() {
+    wave1.transition()
+        .duration(3000)
+        .attr('transform', 'translate(0,-50)')
+        .transition()
+        .duration(3000)
+        .attr('transform', 'translate(0,0)')
+        .on('end', wavesWaving)
+
+    wave2.transition()
+        .duration(2000)
+        .attr('transform', 'translate(0,-12)')
+        .transition()
+        .duration(4000)
+        .attr('transform', 'translate(0,50)')
+};
+
+wavesWaving()
 
