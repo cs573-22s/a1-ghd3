@@ -84,4 +84,11 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
-https://speraruba.github.io/a1-ghd3/index.html
+Website Link: https://speraruba.github.io/a1-ghd3/index.html
+
+Project Description:
+1. Three three color polygons;
+2. An animtion of automatic transformation between rectangle and circle;
+3. An shaking colored line;
+4. An heart shaping path with transparent fill and red stroke;
+5. The picture of robot with glowing fuction. When mouse over them, it eyes and antennia will glow. 
