@@ -1,10 +1,198 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Mingjie Zeng">
+        <title>CS573 Data Vis - a1 - Mingjie Zeng</title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+    <!-- circles and rectangles -->
+    <!-- lines -->
+    <!-- paths -->
+    <!-- different colors -->
+   
+    <body>
+        <p class="a1" style="font-family: 'Times New Roman', Times, serif;text-align: center">CS573 - Assignment 1</p>
+        <p class="a1" style="font-family: 'Times New Roman', Times, serif;text-align: center">Mingjie Zeng (671222265)</p>
+        <p class="a1" style="font-family: 'Times New Roman', Times, serif;text-align: center">mzeng2@wpi.edu</p>
+        <hr />
+        <div class="element" style="width: 1000px;height: 180px;margin: 0 auto;">
+        
+            <p id="introduction" style="color: rgb(70, 68, 68);">Belows are simple circles, rectangles, lines and paths in different colors:</p>
+            <svg id="simple" width="800" height="150" >
+                <circle cx="120" cy="80" r="50" fill="rgb(118,181,197)"></circle>
+                <rect x="230" y="50" width="100" height="60" fill="rgb(234,182,118)"></rect>
+                <line x1="380" y1="40" x2="510" y2="120" stroke="black"></line>
+                <path d="M 560 50 L 560 100 L 610 90 L 640 40 L 710 130" stroke="rgb(203,85,93)" stroke-width="5" fill="none"></path>
+            </svg>
+        </div>
+        <hr />
+        <div class="animation" style="width: 1000px;height: 180px;margin: 0 auto;">
+            <p id="circle-change" style="color: rgb(70, 68, 68);">Slide these axes to select a color and keep mouse over the circle to see the animation effect.</p>
+            <p id="circle-change" style="color: rgb(70, 68, 68);">When keep mouse over a circle, it will roll to right; when click on a circle, it will roll back.</p>
+            <div class="color-change" style="width: 150px;float: left;margin-left: 50px;">
+                <div style="margin-top: 10px;">
+                    <label style="color: red;">R</label>
+                    <input class="slider" type="range" name="points" min="0" max="255" value="0"/>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="color: green;">G</label>
+                    <input class="slider" type="range" name="points" min="0" max="255" value="0"/>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label style="color: blue;">B</label>
+                    <input class="slider" type="range" name="points" min="0" max="255" value="0"/>
+                </div>
+            </div>
+            <div class="circles" style="float: left;width: 500px;height: 130px;">
+                <svg id="circle" width="600" height="130">
+                    <circle cx="100" cy="50" r="30" />
+                    <circle cx="100" cy="50" r="30" opacity="0.9"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.8"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.7"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.6"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.5"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.4"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.3"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.2"/>
+                    <circle cx="100" cy="50" r="30" opacity="0.1"/>
+                </svg>
+            </div>
+        </div>
+        <br>
+        <hr />
+
+        <div class="time" style="height: 500px;width: 1000px;margin: 0 auto;">
+            <p id="game" style="color: rgb(70, 68, 68);">This is a little game. Circles show up every 1 second and circle will disappear when your cursor reaches a circle.</p>
+            <p id="game" style="color: rgb(70, 68, 68);">Try to eliminate more circles!</p>
+            <p id="game" style="color: rgb(70, 68, 68);">Click the 'BEGIN' button to start. And the 'STOP' button to stop.</p>
+            <button onclick="start()">BEGIN</button>
+            <button onclick="stop()">STOP</button>
+            <p id="game" style="color: rgb(70, 68, 68);">    </p>
+
+            <svg id="star" width="600" height="300" style="border:1px solid black">
+                <circle id="c0" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c1" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c2" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c3" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c4" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c5" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c6" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c7" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c8" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c9" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c10" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c11" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c12" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c13" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c14" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c15" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c16" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c17" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c18" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>
+                <circle id="c19" cx="100" cy="50" r="10" fill="rgb(234,182,118)" opacity="0"/>    
+            </svg> 
+            
+        
+        </div>
+        <script>
+            // Try d3 code here
+            // rgb for circles
+            var inputs = document.getElementsByTagName('input');
+            var ccolor = null;
+
+            for (var i=0;i<inputs.length;i++) {
+                inputs[i].onchange = function(){
+                    ccolor = "rgb("+inputs[0].value+","+inputs[1].value+","+inputs[2].value+")"
+
+                    var selcolor = d3.select('#circle')
+                                    .selectAll('circle')
+                                    .attr('fill', ccolor)
+                    
+                }
+            }
+            //console.log(ccolor);
+
+            // animate the circles
+            var dataset = [100, 150, 200, 250, 300, 350, 400, 450, 500, 550]
+
+            var sel = d3.select('#circle')
+                        .selectAll('circle')
+                        .data(dataset)
+                        .on('mouseover', function(event) {
+                            d3.select(this)
+                            .transition()
+                            .duration(3000)
+                            .ease(d3.easeLinear)
+                            .attr('cx', function(d){ return d;})
+                        })
+                        .on('click', function(event) {
+                            d3.select(this)
+                            .transition()
+                            .duration(3000)
+                            .ease(d3.easeLinear)
+                            .attr('cx', function(d){ return 100;})
+                        })
+            
+            // timer  
+            var xloc = [];
+            var yloc = [];
+            for (var i=0;i<20;i++) {
+                xloc.push(randomNum(20,580))
+                yloc.push(randomNum(20,280))
+            }
+
+            console.log(xloc)
+            console.log(yloc)
+
+            function randomNum(minNum,maxNum){ 
+                switch(arguments.length){ 
+                    case 1: 
+                        return parseInt(Math.random()*minNum+1,10); 
+                    break; 
+                    case 2: 
+                        return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+                    break; 
+                        default: 
+                            return 0; 
+                        break; 
+                } 
+            } 
+
+            var sel2 = d3.select('#star')
+                        .selectAll('circle')
+                        .data(xloc)
+                        .attr('cx', function(d,i) { return xloc[i]})
+                        .attr('cy', function(d,i) { return yloc[i]})
+                        .attr('id', function(d,i) {return 'c'+i})
+                        .attr('opacity', function(d){ return 0;})
+                        
+            var myTime = null;            
+            function start() {
+                myTime = setInterval(function() {
+                    
+                    var i = randomNum(0,19)
+                    var id = "#"+"c"+i
+
+                    d3.select(id)
+                        .attr('opacity', 1)
+                        .on('mouseover', function(event) {
+                            d3.select(this)
+                            .transition()
+                            .duration(300)
+                            .ease(d3.easeLinear)
+                            .attr('opacity', function(d){ return 0;})
+                        })
+                }, 1000);
+            }
+
+            function stop() {
+                clearInterval(myTime);
+            }
+                        
+
+        </script>
+    </body>
+
+</html>
