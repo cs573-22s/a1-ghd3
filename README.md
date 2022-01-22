@@ -1,6 +1,10 @@
 Assignment 1 - Hello World: GitHub and d3  
-Source:  https://webdva.github.io/how-to-draw-a-line-in-d3js/
 ===
+Source: https://webdva.github.io/how-to-draw-a-line-in-d3js/
+gh-url: https://github.com/mnorales/a1-ghd3/blob/master/index.html
+Section for Technical and Design Achievements:
+I am completely new to Java Script and I haven't used github in 5-6 years, so as of right now, i am pretty pround of the fact that i was able to get this far  while being so out of practice. A technical acheivment for me was finding an alternative to making the polygons because i tries multiple methods that all failed. Ans the basic design was made through multiple lines instead of one program.
+---
 
 This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
 
