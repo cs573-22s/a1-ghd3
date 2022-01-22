@@ -34,4 +34,4 @@ Design Achievements:
 3. Almost all the elements appear together once the button is clicked except for the ones which are needed for understanding.
 
 References: 
-Path Tracing //https://observablehq.com/@onoratod/animate-a-path-in-d3 
+Path Tracing https://observablehq.com/@onoratod/animate-a-path-in-d3 
