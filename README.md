@@ -11,10 +11,10 @@ Stage 2: (After clicking on the text)
 Stage 3: (After clicking on the button)
 ![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss3.PNG)
 
-Stage 4: 
+Stage 4: (Final)
 ![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss4.PNG)
 
-Description: 
+Description:
 1. Website starts with the display of my name and the assignment which is clickable. Once clicked, the main site loads.
 2. A button is displayed along with a sky blue area in which 5 rectangles and 2 lines can be spotted.
 3. On clicking the button, following can be noted:
