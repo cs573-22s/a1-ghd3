@@ -12,10 +12,10 @@ Results Summary
 ![image](https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/simple.jpg)
 
 - Animation about the circle:
-<div align=center><img src="https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/rolling%20circles.gif" width="1000" height="200" /></div>
+<div align=center><img src="https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/rolling%20circles_.gif" width="500" height="100" /></div>
 
 - A little game:
-<div align=center><img src="https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/game.gif" width="1000" height="500" /></div>
+<div align=center><img src="https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/game_.gif" width="500" height="300" /></div>
 
 Technical Achievement Desription
 ---
