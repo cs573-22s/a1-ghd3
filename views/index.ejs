@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="./js/scripts.js" defer></script>
+<%- include("./partials/nav.ejs") %>
+<p>Hello World!</p>
+<div>
+    <h3>Ok now that we got the boring stuff out of the way lets put it all together</h3>
+    <svg class="svg11" width="1000" height="1000"></svg>
+</div>
+<div>
+    <svg class="svg1" width="600px" height="600px"></svg>
+    <button onclick="reloadPage()">Replay <br>(actually just reloads page bc im lazy)</button>
+</div>
+<svg class="svg2" width="500px" height="500px"></svg>
+<svg class="svg3" width="1000px" height="1000px"></svg>
+<svg class="svg4" width="1000px" height="1000px"></svg>
+<svg class="svg5" width="1000px" height="1000px"></svg>
+<svg class="svg6" width="1000px" height="1000px"></svg>
+<svg class="svg7" width="500px" height="500px"></svg>
+<svg class="svg8" width="500px" height="500px"></svg>
+<svg class="svg9" width="1500px" height="1500px"></svg>
+<div>
+    <svg class="svg10" width="500px" height="500px"></svg>
+    <ul>
+        <li><a onclick="drawPoly(3)">Triangle</a></li>
+        <li><a onclick="drawPoly(4)">Square</a></li>
+        <li><a onclick="drawPoly(5)">Pentagon</a></li>
+        <li><a onclick="drawPoly(6)">Hexagon</a></li>
+        <li><a onclick="drawPoly(7)">Septagon</a></li>
+        <li><a onclick="drawPoly(8)">Octagon</a></li>
+        <li><a onclick="drawPoly(9)">Nonagon</a></li>
+        <li><a onclick="drawPoly(10)">Decagon</a></li>
+        <li><a onclick="drawPoly(11)">11-agon</a></li>
+        <li><a onclick="drawPoly(12)">12-agon</a></li>
+        <li><a onclick="drawPoly(24)">Alot-agon</a></li>
+    </ul>
+</div>
+
+<%- include("./partials/footer.ejs") %>
+
+</body>
+</html>
