@@ -5,10 +5,10 @@ Link to the assignment website: https://kartiknautiyal.github.io/a1-ghd3/index.h
 Stage 1:
 ![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss1.PNG)
 
-Stage 2:
+Stage 2: (After clicking on the text)
 ![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss2.PNG)
 
-Stage 3:
+Stage 3: (After clicking on the button)
 ![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss3.PNG)
 
 Stage 4: 
