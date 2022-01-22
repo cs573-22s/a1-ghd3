@@ -7,7 +7,7 @@ Email:mzeng2@wpi.edu
 
 Results Summary
 ---
-- This is the web link: 
+- This is the web link: https://jasminezzz9.github.io/a1-ghd3/
 - Circles, rectangles, lines and paths in different colors:
 ![image](https://github.com/JasmineZZZ9/a1-ghd3/blob/master/gif/simple.jpg)
 
