@@ -10,6 +10,8 @@ There are five parts in the index page:
 
 I. Circle
 
+
+
 II. Rectangle
 
 III. Line
@@ -23,10 +25,21 @@ Each part has some interaction or designed into some special patterns, Here are 
 (You can also refer to the instructions on the page)
 
 1. Part I: Click on the circles
+
+<img src="https://github.com/ColdCode0214/pictures/blob/main/a1-1-1.png" width = "234" height = "70" alt="" align=center />
+
 2. Part II: Move the mouse on the outermost rectangle
+
+<img src="https://github.com/ColdCode0214/pictures/blob/main/a1-2.png" width = "388" height = "206" alt="" align=center />
+
 3. Part III: None
 4. Part IV: Press on the butterfly for a while
+
+<img src="https://github.com/ColdCode0214/pictures/blob/main/a1-4.png" width = "351" height = "274" alt="" align=center />
+
 5. Part V: click on the button
+
+<img src="https://github.com/ColdCode0214/pictures/blob/main/a1-5.png" width = "320" height = "245" alt="" align=center />
 
 Code Reference
 ---
@@ -49,5 +62,8 @@ Design Achievements
 - Each part has a theme color in order to make the page coordination.
 - In the second part, the rectangles are filled with gradient color to improve the visual effects.
 - In the third part, the lines are designed to imitate the rainbow.
+
+<img src="https://github.com/ColdCode0214/pictures/blob/main/a1-3.png" width = "204" height = "63" alt="" align=center />
+
 - During the movement of the 'blue butterfly', the size of the figure will become smaller and smaller. And the color of it will change into red.
 - In the last part, the fan blades of the windmill are also painted by gradient color
