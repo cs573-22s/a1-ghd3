@@ -11,3 +11,4 @@ Moving on to my professional life, I talk breifly about my experience in the BCB
 ![this is an image](https://github.com/njtourtillott/a1-ghd3/blob/master/Screen%20Shot%202022-01-21%20at%205.57.07%20PM.png)
 
 Finally, I ended out with a cute representation of a smiley face and thanked you for getting to know me.
+https://github.com/njtourtillott/a1-ghd3/blob/master/assignment%201.html
