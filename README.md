@@ -146,7 +146,7 @@ for (let i = 0; i < lines.length; i++) {
 }
 ```
 
-![FixedOverlap]
+![Fixed Overlap]
 
 ### Adding Rectangles
 Going down the list I saw that I still needed to include rectangles and paths to the project. I considered a few
@@ -198,7 +198,7 @@ canvas.selectAll("path")
 With this I was then left with my final product.
 ![With Pentagons]
 
-  [Demo Link]: http://jmeggitt.github.io/01-ghd3/index.html
+  [Demo Link]: https://jmeggitt.github.io/a1-ghd3/index.html
   [Colored Circles]: imgs/coloredCircles.png
   [Connected Circles]: imgs/connectedCircles.png
   [Overlap Issue]: imgs/overlapIssue.png
