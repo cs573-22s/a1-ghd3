@@ -1,6 +1,7 @@
-Assignment 1 - Hello World: GitHub and d3  
+Assignment 1 - Hello World: GitHub and d3 
 ===
-
+Link to my webpage
+https://sudheshnabodapati.github.io/a1-ghd3/index.html
 This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
 
 The primary goal is to be able to generate graphics primitives (circles, rectangles, lines, polygons) at different locations on the screen with different colors. 
@@ -68,19 +69,48 @@ Be sure to test your code there.
 
 Below are some, but not necessarily all, of the key points we will consider during grading:
 
-- Circles and Rectangles  
+- Circles and Rectangles 
+    Rectangles have been created like a bar plot with different color in a sorted order
 - Lines  
-- Paths  
+    created straight lines below
+- Paths 
+    A random path has been created (tried to create a triangle)
+    Learnt how to create an arc (360 angle arc)
 - Different colors  
 - README Quality
     - A description of what you have created. 1-2 screenshots are recommended for the README.  
+    ![image](https://sudheshnabodapati.github.io/a1-ghd3/page.png)
+
     - A working link to the hosted files (usually the gh-pages 'live' url)  
     - Section for Technical and Design Achievements
 
-Technical Achievement Desription -- 12  
-Design Achievement Description -- 12
 
 Remember, it is up to *you* to define what constitutes a technical and design achievements.
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
+
+What I created
+- Circles and Rectangles 
+    Rectangles have been created like a bar plot with different color in a sorted order
+- Lines  
+    created straight lines below
+- Paths 
+    A random path has been created (tried to create a triangle)
+    Learnt how to create an arc (360 angle arc)
+
+Technical Achievement Desription -- 12  
+- Did my first program in HTML/JS
+- Worked on GitHub for the first time and performed pull request
+Design Achievement Description -- 12
+- Tried achieving a decent looking webpage
+- Created a rectangle and something that looks like a bar chart
+- Created an arc 
+
+References
+GeeksforGeeks. 2022. D3.js | Path - GeeksforGeeks. [online] Available at: <https://www.geeksforgeeks.org/d3-js-path/?ref=lbp> [Accessed 22 January 2022].
+
+Observablehq.com. 2022. d3.path. [online] Available at: <https://observablehq.com/@d3/d3-path> [Accessed 22 January 2022].
+
+Youtube.com. 2022. Before you continue to YouTube. [online] Available at: <https://www.youtube.com/channel/UCs0IU3mohVLw5BMtbDZWyPA> [Accessed 22 January 2022].
+
 
