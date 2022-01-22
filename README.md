@@ -36,4 +36,4 @@ Design Achievements:
 4. Inserted a button instead of clickable text
 
 References: 
-Path Tracing https://observablehq.com/@onoratod/animate-a-path-in-d3 
+1. Path Tracing https://observablehq.com/@onoratod/animate-a-path-in-d3 
