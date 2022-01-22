@@ -8,23 +8,20 @@ I
 
 Links
 ---
-
-1. Your project should contain at least four kinds of graphics primitives (circles, rectangles, lines, polygons) in different colors. 
-2. Your document should identify the source of the code if you start with code that you found. 
-3. Your code should be forked from the GitHub repo and linked using GitHub pages. See the "GitHub Details" section below for detailed instructions on how to do this.
+1. The link of the index.
 
 Technical Achievements
 ---
-- Click on the circles and they will change the color and then move from top left to bottom right. During its movement, its speed will change.
+- Click on the circles and they will change the color and then move from top left to bottom right. During its movement, its speed and size will change.
 - Move the mouse to the outmost raectangle, it will change the color into deep green. And when you move the mouse away, it will return to the original light green.
-- Press on the 'blue butterfly' (the polygon in deep blue), it will flap the wings and fly to the pink flower and it color will change into red. When you stop pressing on it, it will fly back to its original position and the color will return back to deep blue.
+- Press on the 'blue butterfly' (the polygon in deep blue), it will flap the wings and fly to the pink flower.During the movement, its color will change into red and its size will become smaller and smaller. When you stop pressing on it, it will fly back to its original position and the color and the size will return back to the original kind.
 - Click on the button on the right of the blue WindMill, it will rotate. The more you click on the button, the fast the windmill will rotate.
-- 
-- Fork the GitHub Repository for Assignment 1. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "main" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site "http://YourUsernameGoesHere.github.io/01-ghd3/index.html".
 
 Design Achievements
 ---
+- There are instructions about how to interact with the figures in each part.
+- Each part has a theme color in order to make the page coordination.
+- In the second part, the rectangles are filled with gradient color to improve the visual effects.
+- In the third part, the lines are designed to imitate the rainbow.
 - During the movement of the 'blue butterfly', the size of the figure will become smaller and smaller. And the color of it will change into red.
+- In the last part, the fan blades of the windmill are also painted by gradient color
