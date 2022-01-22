@@ -27,11 +27,13 @@ Description:
 Technical Achievements:
 1. Path tracing for the border of the legend
 2. Random colors being used for the cheer words
+3. Used circles, rectangles, paths, random colors
 
 Design Achievements: 
 1. The medal circles only appear after the race is over.
 2. The path traced for the border of the legend smoothly joins over
 3. Almost all the elements appear together once the button is clicked except for the ones which are needed for understanding.
+4. Inserted a button instead of clickable text
 
 References: 
 Path Tracing https://observablehq.com/@onoratod/animate-a-path-in-d3 
