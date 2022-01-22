@@ -9,9 +9,15 @@ This project is aimed to show how to draw different shapes and add some animatio
 Technical Achievement Description
 ---
 1. Drawn different shapes of objects including circles, lines, rectangles and path in different colors. 
+<div style="text-align:center;">
+<img src="./images/animation.png">
+</div>
+
 2. Drawn different shapes of objects on top of each other to form animations of separation and combination of objects.
 3. Calculated and implemented a trapezoid path.
-
+<div style="text-align:center;">
+<img src="./images/path.png">
+</div>g
 
 Design Achievement Description
 ---
