@@ -1,10 +1,259 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<p id="p1">
+CIRCLE
+</p>
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+d3.selectAll('#p1')
+    .style('color', 'steelblue');
+</script>
+
+<svg id="map1" width=900 height=100>
+</svg>
+
+<script>
+var dataset = [20];
+
+var linscale = d3.scaleLinear()
+	.domain([0, 50]) // unit: km
+	.range([0, 100]) // unit: pixels
+
+var sel = d3.select('#map1')
+	.selectAll('#map1')
+	.data(dataset)
+	.enter().append('circle')
+                .attr('fill', 'blue')
+	.attr('cx', function(d) { return linscale(d)+10; })
+	.attr('cy', function(d) { return linscale(d); })
+	.attr('r', 30)
+                
+   
+	.attr('id', function(d, i) { return 'rect'+i; })
+	//move
+	.on('click', function(event) {
+		d3.select(this)
+		.transition()
+		.duration(5000)
+		.ease(d3.easeLinear)
+		.attr('cx', function(d) { return linscale(d) + 200; })
+		.attr('fill', 'purple');
+    })
+
+
+var sel = d3.select('#map1')
+	.selectAll('#map1')
+	.data(dataset)
+	.enter().append('circle')
+	.attr('cx', function(d) { return linscale(d)+100; })
+	.attr('cy', function(d) { return linscale(d); })
+	.attr('r', 30)
+                
+   
+	.attr('id', function(d, i) { return 'rect'+i; })
+	//move
+	.on('click', function(event) {
+		d3.select(this)
+		.transition()
+		.duration(500)
+		.ease(d3.easeLinear)
+		.attr('cx', function(d) { return linscale(d) + 200; })
+		.attr('fill', 'yellow');
+    })
+                 
+
+</script>
+
+
+
+<p id="p2">
+RECTANGO
+</p>
+
+<script>
+d3.selectAll('#p2')
+    .style('color', 'purple');
+</script>
+
+
+<svg id="map2" width=300 height=200>
+</svg>
+
+
+<script>
+var dataset = [10];
+
+for(var i = 0; i < dataset.length; i++)
+{
+	d3.selectAll('#map2')
+	.attr("fill","green")
+	.append('rect')
+	.attr('x', dataset[i])
+	.attr('y', dataset[i]+20)
+	.attr("width",100)
+                .attr("height",100)
+}
+
+//change the clolor
+d3.select('#map2')
+	.on('mouseover', function(event) {
+		d3.select(this)
+          		.transition()
+		.duration(100)
+		.attr('fill', 'pink')
+})
+                
+d3.select('#map2')
+	.on('mouseout', function(event) {
+		d3.select(this)
+          		.transition()
+		.duration(100)
+		.attr('fill', 'green')
+});
+
+</script>
+
+
+
+<p id="p3">
+LINE
+</p>
+
+<script>
+d3.selectAll('#p3')
+    .style('color', '#ff6347');
+</script>
+
+
+<svg id="map3" width=300 height=130>
+</svg>
+
+<script>
+var dataset = [0, 10, 300, 50];
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[1]+0)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[3]+0)
+	.attr("stroke", "red")
+	.attr("stroke-width", "5px");
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[1]+10)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[3]+10)
+	.attr("stroke", "orange")
+	.attr("stroke-width", "5px");
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[3]+20)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[1]+20)
+	.attr("stroke", "yellow")
+	.attr("stroke-width", "5px");
+d3.select('#map3')
+	.append("line")
+	.attr("x1", dataset[0])
+	.attr("y1", dataset[3]+30)
+	.attr("x2", dataset[2])
+	.attr("y2", dataset[1]+30)
+	.attr("stroke", "green")
+	.attr("stroke-width", "5px");
+
+</script>
+
+
+
+
+<p id="p4">
+PATH
+</p>
+
+<script>
+d3.selectAll('#p4')
+    .style('color', 'navy');
+</script>
+
+
+<svg width="200" height="200">
+
+      <path d=" M 10 25
+
+                S 12 71 6 21
+
+	S 70 9 90 121
+
+	S 6 71 55 131"
+
+                stroke="gold" stroke-width="2" fill="none" />
+
+    </svg>
+
+<script>
+
+</script>
+
+
+<body>
+<p class='skull'>
+SMILE FACE: HAPPY EVERY DAY
+<div id = "svgcontainer"></div>
+<script>
+            console.log(d3); // test if d3 is loaded
+            //Add an SVG
+            var width = 1000;
+            var height = 1000;
+            var svg = d3.select("#svgcontainer")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+            //background
+             svg.append("circle")
+            .attr("cx", 400)
+            .attr("cy", 400)
+            .attr("r", 230)
+            .attr("style", "fill:green; stroke: black; stroke-width: 2");
+            
+            // Draw a eyes
+            svg.append("circle")
+            .attr('cx',300)
+            .attr('cy',350)
+            .attr('r', 40)
+            .attr('fill','yellow')
+            
+            svg.append("circle")
+            .attr('cx',500)
+            .attr('cy',350)
+            .attr('r', 40)
+            .attr('fill','yellow')
+
+            //Draw a mouth
+            svg.append('path')
+            .attr('d','M 250 500 Q 400,700,550,500')
+            .attr('fill','white');
+
+            // Define eye function
+            function blurFilter() {
+                d3.select(this).attr("filter", "url(#blur)").attr("style", "fill: white");
+            }
+            function noFilter() {
+                d3.select(this).attr("filter", null).attr("style", "fill: white");
+            }
+            function drawBulb(cx, cy, r) {
+                svg.append("circle")
+                .attr("cx", cx)
+                .attr("cy", cy)
+                .attr("r", r)
+                .style("fill", "orange")
+                .on("mouseover", blurFilter)
+                .on("mouseout", noFilter);  
+            }
+            // Draw eyes 
+            drawBulb(300, 350, 40);
+            drawBulb(500, 350, 40);
+
+
 </script>
