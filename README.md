@@ -12,6 +12,6 @@ Description:
         - The bars change colors and start racing downwards
         - Texts of Start line and finish line appear
         - A legend appears down and the path of the border of the legend is traced 
-        - Cheer words appear in **random colors**
+        - Cheer words appear in random colors
         - The winning rectangles are then encircled with the respective colors as mentioned in the legend. 
         
