@@ -84,3 +84,4 @@ Remember, it is up to *you* to define what constitutes a technical and design ac
 Be ambitious as these are designed to allow you to shape your learning.
 These are the only way to move from B to A territory.
 
+https://speraruba.github.io/a1-ghd3/index.html
