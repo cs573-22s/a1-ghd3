@@ -1,4 +1,4 @@
-Assignment 1 - Hello World: GitHub and d3  
+Assignment 1 - Hello World: GitHub and d3 
 ===
 
 This is a starting project to make sure you can write and host a webpage that generates graphics using d3. 
@@ -68,17 +68,27 @@ Be sure to test your code there.
 
 Below are some, but not necessarily all, of the key points we will consider during grading:
 
-- Circles and Rectangles  
+- Circles and Rectangles 
+    Rectangles have been created like a bar plot with different color in a sorted order
 - Lines  
-- Paths  
+- Paths 
+    A random path has been created (tried to create a triangle)
+    Learnt how to create an arc
 - Different colors  
 - README Quality
     - A description of what you have created. 1-2 screenshots are recommended for the README.  
+    ![image](https://github.com/sudheshnabodapati/a1-ghd3/page.png)
+
     - A working link to the hosted files (usually the gh-pages 'live' url)  
     - Section for Technical and Design Achievements
 
 Technical Achievement Desription -- 12  
+- Did my first program in HTML/JS
+- Worked on GitHub for the first time and performed pull request
 Design Achievement Description -- 12
+- Tried achieving a decent looking webpage
+- Created a rectangle and something that looks like a bar chart
+- Created an arc 
 
 Remember, it is up to *you* to define what constitutes a technical and design achievements.
 Be ambitious as these are designed to allow you to shape your learning.

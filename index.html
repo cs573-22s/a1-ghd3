@@ -1,10 +1,83 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- <link rel="stylesheet" type='text/css' href="style.css"> -->
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        .header {
+            font-size: 32px ;
+            font-weight: bold;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .sub-header{
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Assigment 1 - Sudheshna</div>               
+    <div class="sub-header"> Shapes </div>
+    
+    <script type="text/javascript" >
+        var svg = d3.select("body").append("svg").attr('height', '100%').attr('width', '100%');
+        var dataArray = [4,8,12,16,20];
+        var color = d3.interpolate("steelblue","darkgrey");
+        svg.selectAll('rect')
+            .data(dataArray)
+                .enter().append('rect')
+                    .attr('height',function(d,i) {return d*10;})
+                    .attr('width','70')
+                    .attr('fill', function(d,i) {return color(i);})
+                    .attr('x',function(d,i) {return 80*i+50;})
+                    .attr('y',function(d,i){return 350-(d*10)});
+        svg.selectAll('circle')
+            .data(dataArray)
+                .enter().append('circle')
+                .attr('cx', function(d,i) {return 600+i*60})
+                .attr('cy', function(d,i) {return 150+i*40})
+                .attr('r', '30');
+        svg.selectAll('line')
+            .data(dataArray)
+                .enter().append('line')
+                .attr('x1', function(d,i) {return 50})
+                .attr('stroke','orange')
+                .attr('stroke-width','3')
+                .attr('x2', function(d,i) {return 1200-i*10})
+                .attr('y1', function(d,i) {return 410-(d*2)})
+                .attr('y2', function(d,i) {return 410-(d*2)});
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+        var pi = Math.PI;
+        var svg = d3.select("svg")
+            .append("g")
+            .attr("transform", "translate(100,100)");
+        var arc= d3.arc()
+            .innerRadius(40)
+            .outerRadius(80)
+            .startAngle(20) //converting from degrees to radians
+            .endAngle (2*180);
+        svg.append("path")
+            .attr("d", arc)
+            .attr('fill', 'red')
+            
+        var dataarray= [{x:90, y:9}, {x:90, y:-5}, {x:80, y:2}, {x:105, y:5}]
+        var line = d3.line()
+                    .x(function(d,i){return d.x * 10;})
+                    .y(function(d,i){return d.y * 10})
+        svg.append("path")
+            .style("stroke", "red")
+            .style("stroke-width", '4')
+            .style("fill", "none")
+            .attr("d", line(dataarray))
+            .node()
+    </script>
+    </div>
+</body>
+</html>
