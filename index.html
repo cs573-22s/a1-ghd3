@@ -49,6 +49,7 @@ var sel = d3.select('#map1')
 	.attr('cy', function(d) { return linscale(d); })
 	.attr('r', 30)
                 
+   
 	.attr('id', function(d, i) { return 'rect'+i; })
 	//move
 	.on('click', function(event) {
@@ -62,6 +63,8 @@ var sel = d3.select('#map1')
                  
 
 </script>
+
+
 
 <p id="p2">
 RECTANGO
@@ -109,6 +112,8 @@ d3.select('#map2')
 });
 
 </script>
+
+
 
 <p id="p3">
 LINE
@@ -160,6 +165,9 @@ d3.select('#map3')
 
 </script>
 
+
+
+
 <p id="p4">
 PATH
 </p>
@@ -185,5 +193,67 @@ d3.selectAll('#p4')
     </svg>
 
 <script>
+
+</script>
+
+
+<body>
+<p class='skull'>
+SMILE FACE
+<div id = "svgcontainer"></div>
+<script>
+            console.log(d3); // test if d3 is loaded
+            //Add an SVG
+            var width = 1000;
+            var height = 1000;
+            var svg = d3.select("#svgcontainer")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+            //background
+             svg.append("circle")
+            .attr("cx", 400)
+            .attr("cy", 400)
+            .attr("r", 230)
+            .attr("style", "fill:green; stroke: black; stroke-width: 2");
+            
+            // Draw a eyes
+            svg.append("circle")
+            .attr('cx',300)
+            .attr('cy',350)
+            .attr('r', 40)
+            .attr('fill','yellow')
+            
+            svg.append("circle")
+            .attr('cx',500)
+            .attr('cy',350)
+            .attr('r', 40)
+            .attr('fill','yellow')
+
+            //Draw a mouth
+            svg.append('path')
+            .attr('d','M 250 500 Q 400,700,550,500')
+            .attr('fill','white');
+
+            // Define eye function
+            function blurFilter() {
+                d3.select(this).attr("filter", "url(#blur)").attr("style", "fill: white");
+            }
+            function noFilter() {
+                d3.select(this).attr("filter", null).attr("style", "fill: white");
+            }
+            function drawBulb(cx, cy, r) {
+                svg.append("circle")
+                .attr("cx", cx)
+                .attr("cy", cy)
+                .attr("r", r)
+                .style("fill", "orange")
+                .on("mouseover", blurFilter)
+                .on("mouseout", noFilter);  
+            }
+            // Draw eyes 
+            drawBulb(300, 350, 40);
+            drawBulb(500, 350, 40);
+
 
 </script>
