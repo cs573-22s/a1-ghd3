@@ -2,6 +2,18 @@ Assignment 1 - Hello World: GitHub and d3
 ===
 Link to the assignment website: https://kartiknautiyal.github.io/a1-ghd3/index.html
 
+Stage 1:
+![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss1.PNG)
+
+Stage 2:
+![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss2.PNG)
+
+Stage 3:
+![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss3.PNG)
+
+Stage 4: 
+![Alt text](https://github.com/kartiknautiyal/a1-ghd3/blob/master/ss4.PNG)
+
 Description: 
 1. Website starts with the display of my name and the assignment which is clickable. Once clicked, the main site loads.
 2. A button is displayed along with a sky blue area in which 5 rectangles and 2 lines can be spotted.
