@@ -1,10 +1,166 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<html>
 
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- d3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <title>Assginment 1</title>
+
+</head>
+
+<body>
+  <h2 style="text-align: center;">Assignment 1</h2>
+  <p style="text-align: center;">Author: Yujun Mao</p>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <a href="#animation">I. Animation</a>
+    &nbsp;&nbsp;
+    <a href="#path">II. Path</a>
+  </div>
+
+
+  <div class="container">
+    <h3 style="text-align: center;" id="animation">Animation</h3>
+
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <!-- define colors  -->
+      <label for="dataInput1">Color for Circle&nbsp;&nbsp;</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+        onchange="changeColorCircle(this.value)">
+        <option selected value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+      </select>&nbsp;&nbsp;&nbsp;
+      <br>
+      <!-- define colors  -->
+      <label for="dataInput1">Color for Rectangle&nbsp;&nbsp;</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+        onchange="updateColRect(this.value)">
+        <option selected value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+      </select>&nbsp;&nbsp;&nbsp;
+      <br>
+
+      <label for="dataInput1">Color for Line&nbsp;&nbsp;</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+        onchange="updateColLine(this.value)">
+        <option selected value="green">Green</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="blue">Blue</option>
+      </select>&nbsp;&nbsp;&nbsp;
+    </div>
+    <div class="row">
+      <div class="col-sm-5"></div>
+
+      <button type="submit" class="btn btn-primary float-right" onclick="moveShapes()">Separate</button>
+      &nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary float-right" onclick="backShapes()">Combine</button>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div id="graph1div"></div>
+
+    </div>
+    <h3 style="text-align: center;" id="path">Path</h3>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div id="graph2div"></div>
+    </div>
+
+  </div>
+
+  <br>
+
+
+
+  <!-- Bootstrap -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  var svg = d3.select('#graph1div')
+    .append('svg')
+    .attr('id', 'graph1')
+    .attr('width', 500)
+    .attr('height', 500)
+  var scale = 1
+  var cx = 250
+  var cy = 250
+  var r = 50 * scale
+  var l = r * Math.sqrt(2)
+  var rx = cx - l / 2
+  var ry = cy - l / 2
+  var lx1 = cx - r
+  var ly1 = cy
+  var lx2 = cx + r
+  var ly2 = cy
+  var colCircle = "red"
+  var colRect = "blue"
+  var colLine = "green"
+
+
+  svg.append("circle").attr("cx", cx).attr('cy', cy).attr('r', r).attr("fill", colCircle)
+  svg.append("rect").attr('x', rx).attr("y", ry).attr('width', l).attr('height', l).attr('fill', colRect)
+  svg.append("line").attr("x1", lx1).attr('y1', ly1).attr("x2", lx2).attr("y2", ly2).attr("stroke-width", "5px").attr("stroke", colLine)
+
+  var svg2 = d3.select('#graph2div')
+    .append('svg')
+    .attr('id', 'graph2')
+    .attr('width', 500)
+    .attr('height', 500)
+
+  var path = d3.path()
+  path.moveTo(200, 125)
+  path.lineTo(300, 125)
+  path.lineTo(350, 175)
+  path.lineTo(150, 175)
+  path.closePath();
+
+  svg2.append("path").attr("d", path).attr("stroke", "green").attr("fill", "blue");
+
+  function moveShapes() {
+    svg.select("rect").transition().duration(2000)
+      .attr('x', rx - l / 2 - r - 30).attr("y", ry)
+    svg.select('line').transition().duration(2000).attr("x1", lx1 + l / 2 + r + 30).attr('y1', ly1).attr("x2", lx2 + l / 2 + r + 30).attr("y2", ly2)
+  }
+
+  function backShapes() {
+    svg.select("rect").transition().duration(2000)
+      .attr('x', rx).attr("y", ry).attr('width', l).attr('height', l)
+    svg.select('line').transition().duration(2000).attr("x1", lx1).attr('y1', ly1).attr("x2", lx2).attr("y2", ly2)
+  }
+
+  function changeColorCircle(val) {
+    svg.select("circle").transition().duration(100).attr("fill", val)
+  }
+
+  function updateColRect(val) {
+    svg.select("rect").transition().duration(100).attr("fill", val)
+  }
+
+  function updateColLine(val) {
+    svg.select("line").transition().duration(100).attr("stroke", val)
+  }
 </script>
+
+</html>
