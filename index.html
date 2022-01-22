@@ -1,10 +1,153 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+The Quest For The Triforce
+
+<p class='visclass'>
+  Oh no! The Calamity is coming, but the Triforce is nowhere to be found!
+  Out of ideas, Link goes to Zelda for help. Legend says that one of the
+  6 pillars in the temple of time hides a secret button. Can you find out
+  which pillar to hit by reading the book Zelda gave you?
+</p>
+
+<svg width=600 height=600 class='triforce'>
+</svg>
+
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+
+// Create background rectangle for triforce
+d3.select('svg')
+  .append('rect')
+  .attr('x', 70)
+  .attr('y', 30)
+  .attr('width', 160)
+  .attr('height', 140)
+  .attr('fill', 'lightgray')
+
+// Create points for the triforce
+var points = [{x:150, y:50, id:'dot1'},
+{x:90, y:150, id:'dot4'}, {x:210, y:150, id:'dot6'},
+{x:150, y:150, id:'dot5'}, {x:120, y:100, id:'dot2'},
+{x:180, y:100, id:'dot3'}];
+
+d3.select('svg')
+  .selectAll('circle')
+  .data(points)
+  .enter().append('circle')
+  .attr('cx',  function(d) {return d.x; })
+  .attr('cy', function(d) {return d.y; })
+  .attr('r', 5)
+  .attr('id', function(d) {return d.id; })
+  .attr('fill', 'yellow')
+
+
+// Create Link, Zelda, and book using rectangles
+
+  var people = [{x:0, y:0, w:0, h:0, id:'zero', color:'green'},
+  {x:40, y:260, w:80, h:200, id:'L-hat', color:'green'},
+  {x:60, y:280, w:60, h:80, id:'L-head', color:'tan'},
+  {x:180, y:260, w:80, h:100, id:'Z-hair', color:'yellow'},
+  {x:180, y:280, w:60, h:80, id:'Z-head', color:'tan'},
+  {x:180, y:360, w:80, h:100, id:'Z-dress', color:'pink'},
+  {x:105, y:500, w:90, h:100, id:'book', color:'brown'}]
+
+  d3.select('svg')
+    .selectAll('rect')
+    .data(people)
+    .enter().append('rect')
+    .attr('x', function(d) {return d.x})
+    .attr('y', function(d) {return d.y})
+    .attr('width', function(d) {return d.w})
+    .attr('height', function(d) {return d.h})
+    .attr('id', function(d) {return d.id})
+    .attr('fill', function(d) {return d.color})
+
+// Put all the text needed
+
+var title = [{x:110, y:525, text:'TRIFORCE', id:'text0'},
+{x:140, y:540, text:'101', id:'text1'},
+{x:120, y:570, text:'For dumb', id:'text2'},
+{x:130, y:585, text:'heroes', id:'text3'},
+{x:240, y:130, text:'That one! Hit it!', id:'text4'},
+{x:80, y:210, text:'You have the Triforce!', id:'text5'},
+{x:83, y:225, text:'Now go save Hyrule!', id:'text6'},
+{x:5, y:560, text:'Hit the book!', id:'text7'}];
+
+
+d3.select('svg')
+  .selectAll('text')
+  .data(title)
+  .enter().append('text')
+  .attr('x', function(d) {return d.x})
+  .attr('y', function(d) {return d.y})
+  .attr('id', function(d) {return d.id})
+  .text(function(d) {return d.text})
+  .style('fill', 'white');
+
+d3.select('#text7').style('fill', 'black')
+
+
+// Create the path to highlight the correct point for the triforce
+
+var way = d3.path()
+way.moveTo(120, 460)
+way.quadraticCurveTo(210, 510, 300, 460)
+way.bezierCurveTo(430, 400, 250, 280, 320, 220)
+way.quadraticCurveTo(430, 110, 225, 147)
+
+
+// Make the changes after clicking on the book
+d3.select('#book')
+  .on('click', function(event){
+
+    // Add the path
+    d3.select('svg')
+      .append('path')
+      .attr('d', way)
+      .style('fill', 'none')
+      .style('stroke', 'blue')
+
+    // Change the color of the correct point
+    d3.select('#dot6').attr('fill', 'blue')
+
+    // Make the text near the triforce visible
+    d3.select('#text4').style('fill', 'black');
+
+    // Make the text near the book insivible
+    d3.select('#text7').remove();
+  });
+
+
+  // Create edges of the triforce when clicking the correct point
+
+  var edges = [{x1:150, y1:50, x2:90, y2:150},
+  {x1:90, y1:150, x2:210, y2:150}, {x1:210, y1:150, x2:150, y2:50},
+  {x1:120, y1:100, x2:150, y2:150}, {x1:150, y1:150, x2:180, y2:100},
+  {x1:180, y1:100, x2:120, y2:100}]
+
+  d3.select('#dot6')
+    .on('click', function(event){
+      d3.select('svg')
+        .selectAll('line')
+        .data(edges)
+        .enter().append('line')
+        .transition()
+        .duration(1000)
+        .attr('x1', function(d) {return d.x1})
+        .attr('y1', function(d) {return d.y1})
+        .attr('x2', function(d) {return d.x2})
+        .attr('y2', function(d) {return d.y2})
+        .style('stroke', 'yellow')
+        .style('stroke-width', 10);
+
+      // Make 'Hit that pillar' text invisible
+      d3.select('#text4').remove();
+
+      // Make the ending text visible
+      d3.select('#text5').style('fill', 'black');
+      d3.select('#text6').style('fill', 'black');
+    })
+
+
 </script>
