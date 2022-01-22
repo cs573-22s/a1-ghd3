@@ -1,10 +1,234 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<p id ="para1" class = "visclass" style="font-size:15px">
+Kartik Nautiyal (Assignment 1: click Here)
+</p>
+<p id = "para2" class = "visclass" style="font-size:25px"></p>
+<button type="button"></button>
+<svg id = "k" width = 750 height = 600></svg>
+
 
 <script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+
+//datasets used later
+//positions of rectangles
+var dataset = [20,40,60,80,100];
+//cheers for our athletes
+var dat = ['GO!', 'Yes!', '*Cheer!*','Woohooo!','Yay!']
+//Path we are going trace
+var path = 'M125,375 L125,525 L300,525 L300,375 Z'
+// random colors for cheers
+var colors = ["red","green","blue", "magenta","black","yellow"]
+
+//Random number generator (for randomly selecting colors)
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
+//scale (used for distances of rectangles etc)
+var linscale = d3.scaleLinear()
+  .domain([0, 100]) // unit: km
+  .range([50, 550]) // unit: pixels
+
+
+//on selecting Name 
+
+d3.select("#para1")
+	.on("click", function(event) {
+		
+		// Text appears
+		d3.select('#para2')
+			.style("color", "black")
+			.text('Let\'s Race')
+		
+		// remove initial text
+		d3.select('#para1')
+			.remove()
+		
+		// bg color
+		d3.select('svg')
+			.style('background', 'skyblue')
+		
+		// button
+		d3.select('button')
+			.text("Click to begin")
+		
+		//Lines
+		d3.select('svg')
+			.append('line')
+			.attr("x1",100)
+			.attr("y1",10)
+			.attr("x2",570)
+			.attr("y2",10)
+			.attr("stroke","black");
+		
+		d3.select('svg')
+			.append('line')
+			.attr("x1",100)
+			.attr("y1",300)
+			.attr("x2",570)
+			.attr("y2",300)
+			.attr("stroke","black");
+		
+		// Athletes (RECTS)
+		d3.select('svg')
+			.selectAll('rect')
+			.data(dataset)
+			.enter()
+			.append('rect')
+			.attr('x', function (d) {return linscale(d);})
+			.attr('y', 10)
+			.attr('width', 10)
+			.attr('height', 30)
+			.attr('stroke', 'blue')
+			.attr('stroke-width', 2)
+			.attr('fill', 'none')
+	});
+
+
+// button functions
+d3.select("button")
+	.on('click', function(event) {
+		
+		//rectangle transition
+		d3.selectAll('rect')
+			.transition()
+			.duration(function(d) {return (50*d) + 5000})
+			.ease(d3.easeLinear)
+			.attr("height", 300)
+			.attr('fill','red')
+
+
+		//circles for legend
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(20) + 5)
+			.attr('cy', 400)
+			.attr('r',20)
+			.style('fill','none')
+			.style('stroke','blue')
+			.style('stroke-width',"5px");
+		
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(20) + 5)
+			.attr('cy', 450)
+			.attr('r',20)
+			.style('fill','none')
+			.style('stroke','red')
+			.style('stroke-width',"5px");
+		
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(20) + 5)
+			.attr('cy', 500)
+			.attr('r',20)
+			.style('fill','none')
+			.style('stroke','green')
+			.style('stroke-width',"5px");
+
+
+		//cheers
+		d3.select('svg')
+			.selectAll('text')
+			.data(dat)
+			.enter()
+			.append('text')
+			.style("font-size","25px")
+			.style("fill",function(d){return(colors[getRandomInt(7)]);})
+			.attr("x",600)
+			.attr("y",function(d,i){ return(100 + i*100);})
+			.text(function(d) {return(d);})
+
+		// random texts except cheers
+		d3.select('svg')
+			.append('text')
+			.attr("x",20)
+			.attr("y",15)
+			.text("Start Line")
+			.attr("fill", "black");
+
+		d3.select('svg')
+			.append('text')
+			.attr("x",20)
+			.attr("y",305)
+			.text("Finish Line")
+			.attr("fill", "black");
+
+		d3.select('svg')
+			.append('text')
+			.attr("x",linscale(20) + 30)
+			.attr("y",405)
+			.text("First")
+			.attr("fill", "black");
+
+		d3.select('svg')
+			.append('text')
+			.attr("x",linscale(20) + 30)
+			.attr("y",455)
+			.text("Second")
+			.attr("fill", "black");
+
+		d3.select('svg')
+			.append('text')
+			.attr("x",linscale(20) + 30)
+			.attr("y",505)
+			.text("Third")
+			.attr("fill", "black");
+
+
+		// medals for atheletes
+
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(20) + 5)
+			.attr('cy',315)
+			.attr('r',20)
+			.style('fill','none')
+			.transition()
+			.style('fill','none')
+			.style('stroke','blue')
+			.style('stroke-width',"5px")
+			.delay(5500);
+
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(40) + 5)
+			.attr('cy',315)
+			.attr('r',20)
+			.style('fill','none')
+			.transition()
+			.style('fill','none')
+			.style('stroke','red')
+			.style('stroke-width',"5px")
+			.delay(5000 + 50*30);	
+
+		d3.select('svg')
+			.append('circle')
+			.attr('cx', linscale(60) + 5)
+			.attr('cy',315)
+			.attr('r',20)
+			.style('fill','none')
+			.transition()
+			.style('fill','none')
+			.style('stroke','green')
+			.style('stroke-width',"5px")
+			.delay(5000 + 50*50);	
+
+
+		// Path (animated rectangle legend)
+		//https://observablehq.com/@onoratod/animate-a-path-in-d3
+		d3.select('svg')
+		.append('path')
+		.attr('d',path)
+		.attr('fill','none')
+		.attr('stroke','black')
+		.attr('stroke-dasharray', 650 + " " + 650)
+		.attr('stroke-dashoffset', 650)
+			.transition()
+			.ease(d3.easeLinear)
+			.attr('stroke-dashoffset', 0)
+			.duration(5000);
+	});
+
 </script>
