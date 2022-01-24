@@ -10,9 +10,11 @@ For the purposes of the assignment, the following elements of the page are the f
 3. Polygons - The roof of the house
 4. Lines - The frame of the window
 
+This code was largely written from scratch while adapting elements from the sample code from the second lecture.
+
 ## Technical Achievement Desription
 - **Randomized Ship Locations** - When the drawing is generated the ships will be in a random spot every time. In the code, a random dataset is generated on every refresh. The size of each star is also randomized.
-- **Dragging the Moon** - Users are able to drag the moon across the sky using the mouse. In the underlying implementation, I leared how to use `d3.drag()` to capture mouse events and make the drawing change.
+- **Dragging the Moon** - Users are able to drag the moon across the sky using the mouse. In the underlying implementation, I leared how to use `d3.drag()` to capture mouse events and make the drawing change. I used this [reference](https://d3-wiki.readthedocs.io/zh_CN/master/Drag-Behavior/) to learn about it, although I had learned the documentation was out of date.
 
 ## Design Achievement Description 
 - **Minimalist Artstyle** - Although, I'm not an artisitc person, I tried to make an aethetically pleasing drawing using the shapes I had available. I really liked how the yellow light of inside the house contrasts with the dark exterior of the drawing.
