@@ -1,10 +1,166 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg id="main_canvas" width=800 height=600>
+
+</svg>
+
 <script>
+  /***
+   * CS573 Assignment 1
+   * James Plante
+   * jplante@wpi.edu
+   */
+  "use strict"; // Let's just catch those errors early
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
+  const NUMBER_OF_STARS = 300;
+  const HEIGHT = 600;
+  const WIDTH = 800;
+
+  // Implementation of function from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_integer_between_two_values
+  const randomFromRange = (min, max) => Math.random() * (max - min) + min;
+
+  const canvas = d3.select("#main_canvas")
+  .attr("style", "background-color: #0a0e17");
+  
+  const GROUND_LEVEL = 200;
+  const HOUSE_HEIGHT = 100;
+  const HOUSE_WIDTH = 200;
+  const HOUSE_X = 300;
+  const ROOF_HEIGHT = 80;
+  const WINDOW_SIZE = 10;
+
+  const starCoords = Array.from(Array(NUMBER_OF_STARS), () => [randomFromRange(0, 800), randomFromRange(0, HEIGHT - GROUND_LEVEL)]);
+
+  // Sky
+  d3.select("#main_canvas")
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", WIDTH)
+    .attr("height", HEIGHT)
+    .attr("fill", "#0a0e17")
+    .attr("id", "sky")
+    .on("click", (evt) => {
+      const starNumber = parseInt(randomFromRange(0, NUMBER_OF_STARS));
+      d3.select(`#star${starNumber}`)
+          .transition()
+          .duration(500)
+          .ease(d3.easeCubic)
+          .attr('fill', 'red')
+          .attr('cx', WIDTH + 50)
+          .attr('r', 10);
+    });
+
+  d3.select("#main_canvas")
+    .selectAll("circle")
+    .data(starCoords)
+    .enter()
+    .append("circle")
+    .attr("class", "star")
+    .attr("cx", (d) => d[0]) 
+    .attr("cy", (d) => d[1])
+    .attr("r", (d) => randomFromRange(0.5, 1))
+    .attr("fill", "white")
+    .attr("id", ((d, i) => `star${i}`));
+
+  // Moon
+  const drag = d3.drag().on("drag", (evt) => {
+      d3.select("#moon")
+        .transition()
+        .ease(d3.easeLinear)
+        .attr("cx",  evt.x)
+        // Avoids phasing through ground
+        .attr("cy", (evt.y < HEIGHT - GROUND_LEVEL + 30) ? evt.y : HEIGHT - GROUND_LEVEL + 30)
+  });
+
+  d3.select("#main_canvas")
+    .append("circle")
+    .attr("cx", 700)
+    .attr("cy", 40)
+    .attr("r", 30)
+    .attr("fill", "#ebe7b9")
+    .attr("id", "moon")
+    .call(drag);
+
+  // Ground
+  d3.select("#main_canvas")
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", HEIGHT - GROUND_LEVEL)
+    .attr("width", WIDTH)
+    .attr("height", GROUND_LEVEL)
+    .attr("fill", "#0a1a07")
+    .attr("id", "ground")
+
+  // House Frame  
+  d3.select("#main_canvas")
+    .append("rect")
+    .attr("x", HOUSE_X)
+    .attr("y", HEIGHT - GROUND_LEVEL - HOUSE_HEIGHT)
+    .attr("width", HOUSE_WIDTH)
+    .attr("height", HOUSE_HEIGHT)
+    .attr("id", "house_body")
+
+  // Roof
+  d3.select("#main_canvas")
+    .append("polygon")
+    .attr("points", `${HOUSE_X - 50}, ${HEIGHT - GROUND_LEVEL - HOUSE_HEIGHT} ` +
+      `${HOUSE_X + HOUSE_WIDTH + 50}, ${HEIGHT - GROUND_LEVEL - HOUSE_HEIGHT} ` + 
+      `${HOUSE_X + (HOUSE_WIDTH / 2) }, ${HEIGHT - GROUND_LEVEL - HOUSE_HEIGHT - ROOF_HEIGHT}`
+      )
+    .attr("id", "roof");
+  
+  // Window
+  const WINDOW_WIDTH = (HOUSE_WIDTH / 3);
+  const WINDOW_HEIGHT = (HOUSE_HEIGHT / 2);
+  const WINDOW_X = HOUSE_X + (HOUSE_WIDTH / 3);
+  const WINDOW_Y = HEIGHT - GROUND_LEVEL - ( 2.5 * HOUSE_HEIGHT / 3);
+  let window_on = true;
+
+  d3.select("#main_canvas")
+    .append("rect")
+    .attr("x", WINDOW_X)
+    .attr("y", WINDOW_Y)
+    .attr("width", WINDOW_WIDTH)
+    .attr("height", WINDOW_HEIGHT) 
+    .attr("fill", "yellow")
+    .attr("id", "window")
+    .on("click", (event) => {
+      if (window_on) {
+        d3.select("#window")
+          .transition()
+          .duration(500)
+          .ease(d3.easeLinear)
+          .attr('fill', 'black');
+      } else {
+        d3.select("#window")
+          .transition()
+          .duration(500)
+          .ease(d3.easeLinear)
+          .attr('fill', 'yellow');
+      }
+      window_on = !window_on;
+    });
+
+  // Frame
+  d3.select("#main_canvas")
+    .append("line")
+    .attr("x1", WINDOW_X + WINDOW_WIDTH / 2)
+    .attr("x2", WINDOW_X + WINDOW_WIDTH / 2)
+    .attr("y1", WINDOW_Y)
+    .attr("y2", WINDOW_Y + WINDOW_HEIGHT)
+    .attr("stroke", "black")
+    .attr("stroke-width", 10)
+    .attr("id", "frame1");
+
+  d3.select("#main_canvas")
+    .append("line")
+    .attr("x1", WINDOW_X)
+    .attr("x2", WINDOW_X + WINDOW_WIDTH)
+    .attr("y1", WINDOW_Y + WINDOW_HEIGHT / 2)
+    .attr("y2", WINDOW_Y + WINDOW_HEIGHT / 2)
+    .attr("stroke", "black")
+    .attr("stroke-width", 10)
+    .attr("id", "frame1");
+
 </script>
