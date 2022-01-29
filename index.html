@@ -1,10 +1,261 @@
-<script src="https://d3js.org/d3.v6.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 1 - Ziyang Xu</title>
+<meta charset="UTF-8" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/d3.v5.min.js"></script>
 
-<script>
-  console.log(d3); // test if d3 is loaded
-  // Add an SVG
-  // Add Rectangles
-  // Add Circles
-  // Add Lines
-  // Add Polygons
-</script>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Assignment 1</h2>
+    <p style="text-align: center;">Ziyang Xu</p>
+
+    <p class="polygon">
+        Polygon
+        <br>    
+        <svg viewBox="0 0 10 1">  
+            <polygon points="0,0 0,1 1,1 0.5,0.5 1,0" fill="#285d77" />
+            <polygon points="1,0 1,1 2,1 1.5,0.5 2,0" fill="#2087b9" />
+            <polygon points="2,0 2,1 3,1 2.5,0.5 3,0" fill="#00a6f7" />
+        </svg>
+    </p>
+
+    <p class="circle">
+        Rectangle <--> Circle    
+        <br>
+        <svg viewBox="0 0 5 1">
+        <rect width="1" height="1" fill="green">
+        <animate attributeName="rx" values="0;1;0" dur="5s" repeatCount="indefinite" />
+        </rect>
+        </svg>
+    </p>
+
+    <p class="line">
+        Line
+        <br>
+        <script>
+            //Width and Height
+            var w = 150;
+            var h = 100;
+
+            //Create line
+            var svg = d3.select("body")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+
+            var line = svg.append("path")
+                .attr("stroke","#00ffff")
+                .attr("stroke-width", 6)
+
+            //Global array
+            var linedata = [];
+
+            //random multiplier
+            var randNum = 50;
+
+            setInterval(function() {
+            var random = {
+                a: Math.floor(Math.random()*randNum),
+            };
+
+            linedata = [ "M 0 0 L 200 " + (100+random.a) ];
+
+            line.data(linedata);
+        
+            line.attr("d", function(d) {
+                    return d;
+                })
+        }, 10);
+        </script>
+    </p>
+
+    <p>
+        Path
+        <br>
+        <svg width="100px" height="100px" >
+            <path d="M 10,30
+           A 20,20 0,0,1 50,30
+           A 20,20 0,0,1 90,30
+           Q 90,60 50,90
+           Q 10,60 10,30 z"
+           fill="transparent" stroke="#fd0000"/>
+          </svg>
+    </p>
+
+    <p class='robot'>
+        Robot (Mouseover its eyes and antenna see what happens!)<br>
+        <div id = "svgcontainer"></div>
+        <script>
+        //Add an SVG
+            var width = 1000;
+            var height = 1000;
+            var svg = d3.select("#svgcontainer")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        //background
+            svg.append("circle")
+            .attr("cx", 350)
+            .attr("cy", 410)
+            .attr("r", 280)
+            .attr("style", "fill:#b71818d1; stroke: black; stroke-width: 2");
+        // Draw a robot
+        // Draw head
+            svg.append("rect")
+            .attr("x", 300)
+            .attr("y", 200)
+            .attr('width', 100)
+            .attr('height', 100)
+            .style("fill", "rgb(173 171 171)")
+            .style('stroke', 'black')
+            .style('stroke-width', '2');
+        //draw neck
+            svg.append("rect")
+            .attr("x", 325)
+            .attr("y", 300)
+            .attr('width', 50)
+            .attr('height', 10)
+            .style("fill", "rgb(173 171 171)")
+            .style('stroke', 'black')
+            .style('stroke-width', '2');
+        //draw body
+            svg.append("rect")
+            .attr("x", 210)
+            .attr("y", 310)
+            .attr('width', 280)
+            .attr('height', 300)
+            .style("fill", "rgb(173 171 171)")
+            .style('stroke', 'black')
+            .style('stroke-width', '2');
+        //draw leg
+            svg.append("rect")
+            .attr("x", 266)
+            .attr("y", 610)
+            .attr('width', 56)
+            .attr('height', 100)
+            .style("fill", "rgb(173 171 171)")
+            .style('stroke', 'black')
+            .style('stroke-width', '2');
+            svg.append("rect")
+            .attr("x", 378)
+            .attr("y", 610)
+            .attr('width', 56)
+            .attr('height', 100)
+            .style("fill", "rgb(173 171 171)")
+            .style('stroke', 'black')
+            .style('stroke-width', '2');
+        // draw foot
+            var footStyle = "fill: rgb(173, 171, 171); stroke:black; stroke-width: 2";
+            svg.append("polygon")
+            .attr("points", "378, 710 368, 740 444, 740 434, 710")
+            .attr("style", footStyle)
+            svg.append("polygon")
+            .attr("points", "266, 710 256, 740 332, 740 322, 710")
+            .attr("style", footStyle)
+        //draw arm
+            svg.append("line")
+            .attr("x1", 210)
+            .attr("y1", 310)
+            .attr("x2", 100)
+            .attr("y2", 500)
+            .attr("stroke", "black")
+            .attr("stroke-width", 25);
+            svg.append("line")
+            .attr("x1", 490)
+            .attr("y1", 310)
+            .attr("x2", 600)
+            .attr("y2", 500)
+            .attr("stroke", "black")
+            .attr("stroke-width", 25);
+        //Draw shoulder
+            svg.append("circle")
+            .attr("cx", 210)
+            .attr("cy", 310)
+            .attr("r", 30)
+            .attr("style", "fill: #0a473f; stroke: black; stroke-width: 2");
+            svg.append("circle")
+            .attr("cx", 490)
+            .attr("cy", 310)
+            .attr("r", 30)
+            .attr("style", "fill: #0a473f; stroke: black; stroke-width: 2");
+        // Draw hands
+            svg.append("circle")
+            .attr("cx", 100)
+            .attr("cy", 500)
+            .attr("r", 30)
+            .attr("style", "fill: rgb(169, 151, 151); stroke: black; stroke-width: 2");
+
+            svg.append("circle")
+            .attr("cx", 600)
+            .attr("cy", 500)
+            .attr("r", 30)
+            .attr("style", "fill: rgb(169, 151, 151); stroke: black; stroke-width: 2");
+            
+        //Draw mouth
+            svg.append('polyline')
+            .attr('points','320,300 320,270 380,270 380,300 368,300 368,270 356,270 356,300 344,300 344,270 332,270 332,300')
+            .attr('fill','none')
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+            svg.append("line")
+            .attr("x1", 320)
+            .attr("y1", 285)
+            .attr("x2", 380)
+            .attr("y2", 285)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+            //draw antenna
+            svg.append("line")
+            .attr("x1", 350)
+            .attr("y1", 200)
+            .attr("x2", 350)
+            .attr("y2", 155)
+            .attr("stroke", "black")
+            .attr("stroke-width", 2); 
+
+            //bully decoration
+            svg.append('polyline')
+            .attr('points','294,600 294,420 410,420 410,600 294,600')
+            .attr('fill','none')
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+            svg.append("circle")
+            .attr("cx", 400)
+            .attr("cy", 500)
+            .attr("r", 5)
+            .style("fill", "none")
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+            // Draw eyes
+            // Define a blur filter
+            var filter = svg.append("defs")
+            .append("filter")
+            .attr("id", "blur")
+            .append("feGaussianBlur")
+            .attr("stdDeviation", 3); 
+            // Define eye function
+            function blurFilter() {
+                d3.select(this).attr("filter", "url(#blur)").attr("style", "fill: #fff1a7");
+            }
+            function noFilter() {
+                d3.select(this).attr("filter", null).attr("style", "fill: gold");
+            }
+            function draweye(cx, cy, r) {
+                svg.append("circle")
+                .attr("cx", cx)
+                .attr("cy", cy)
+                .attr("r", r)
+                .style("fill", "gold")
+                .on("mouseover", blurFilter)
+                .on("mouseout", noFilter);  
+            }
+            // Draw eyes 
+            draweye(325, 233, 15);
+            draweye(375, 233, 15);
+            draweye(350, 155, 15);
+        </script>
+    </p>
+</body>
