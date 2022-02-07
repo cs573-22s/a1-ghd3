@@ -1,3 +1,6 @@
+const vega = require("vega");
+
+
 function reloadPage() {
     window.location.reload()
 }
@@ -459,3 +462,51 @@ function wavesWaving() {
 
 wavesWaving()
 
+// data vis example for assignment 2
+//const carsData = FileAttachment('cars-sample.csv').csv({typed: true})
+// const carsData = d3.csv('cars-sample.csv').then(function(d) {
+//     console.log(d);
+//     buildScatter(d);
+// })
+
+
+/*function buildScatter(data) {
+    const height = 600;
+    const width = 800;
+    const margin = ({top: 20, right: 30, bottom: 30, left: 40})
+    const x = d3.scaleLinear()
+        .domain(d3.extent(data, d => +d.Weight)).nice()
+        .range([margin.left, width - margin.right])
+    const y = d3.scaleLinear()
+        .domain(d3.extent(data, d => +d.MPG)).nice()
+        .range([height - margin.bottom, width - margin.top])
+
+    const svg100 = d3.select('.svg100')
+        .append('svg')
+        .attr('viewBox', [0, 0, width, height])
+        .property('value', []);
+
+    let dot = svg100.append('g')
+        .attr('fill', 'none')
+        .attr('stroke', 'steelblue')
+        .data(carsData)
+        .join('circle')
+        .attr('transform', (d) => 'translate(' + d.Weight + ', ' + d.MPG + ')')
+        .attr('r', d => 3)
+        //.attr('r', d => size(+d.Weight))
+
+
+}*/
+
+
+
+/* const marks = vl.markCircle()
+    .data("url", "C:\\Users\\apeco\\Downloads")
+    .encode(
+        vl.x().field("Horsepower"),
+        vl.y().field("MPG"),
+        vl.tooltip().field("Name")
+    )
+
+
+document.body.appendChild(marks.render()) */
