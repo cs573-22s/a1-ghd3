@@ -1,4 +1,34 @@
-const vega = require("vega");
+
+// map stuff
+
+// Promise.all([
+//     d3.json('../public/world.geojson'),
+//     d3.csv('../public/cities.csv')
+// ]).then( ([countries, cities]) => {
+//     createMap(countries,cities)
+// })
+//
+//
+// function createMap(countries, cities) {
+//     console.log(countries)
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function reloadPage() {

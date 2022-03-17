@@ -4,9 +4,15 @@
 
 <body>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 <script src="./js/scripts.js" defer></script>
 <%- include("./partials/nav.ejs") %>
-<div>
+
+
+
+<svg width=960 height=600></svg>
+
+<!--<div>
     <p>Im lazy so i didnt format this very well but heres a cool thing a made then the rest is just junk that i was experimenting with before i made this</p>
     <svg class="svg11" width="1000" height="1000"></svg>
 </div>
@@ -38,7 +44,71 @@
         <li><a onclick="drawPoly(24)">Alot-agon</a></li>
     </ul>
 </div>
-<svg class="svg100"></svg>
+<svg class="svg100"></svg>-->
+<script defer>
+    Promise.all([
+        d3.json('world.geojson'),
+        d3.csv('cities.csv')
+    ]).then( ([countries, cities]) => {
+        createMap(countries,cities)
+    })
+
+
+    function createMap(countries, cities) {
+        console.log(countries)
+        var proj = d3.geoEquirectangular()
+            .translate([250, 250])
+            .scale(120);
+
+        var gpath = d3.geoPath()
+        .projection(proj);
+
+        d3.select('svg')
+            .append('g')
+            .attr('id', 'countries')
+            .selectAll('path')
+            .data(countries.features)
+            .enter()
+            .append('path')
+                .attr('d', function(d) { console.log(d); return gpath(d); })
+                .attr('stroke-width', 1)
+                .attr('stroke', '#252525')
+                .attr('id', d => d.id)
+                .attr('fill', 'white' )
+                .on('mouseover', function() {
+                    d3.select(this).attr('fill', 'green')
+                })
+                .on('mouseout', function() {
+                    d3.select(this).attr('fill', 'white')
+                });
+
+        // d3.select('#EGY')
+        // .attr('fill', 'green');
+
+        // to zoom set up d3 machinery
+        var mapZoom = d3.zoom()
+            .on('zoom', zoomed);
+
+        // setp to grea settings
+        var zoomSettings = d3.zoomIdentity
+            .translate(250, 250)
+            .scale(120)
+
+        // mush in d3 machinery to map
+        d3.select('svg')
+        .call(mapZoom)
+        .call(mapZoom.transform, zoomSettings);
+
+        function zoomed(e) {
+            proj.translate([e.transform.x, e.transform.y])
+            .scale(e.transform.k); // can us e.transform.k to add stuff as you zoom in with if statement
+
+            d3.selectAll('path')
+            .attr('d', gpath);
+        }
+
+    }
+</script>
 <%- include("./partials/footer.ejs") %>
 
 </body>
