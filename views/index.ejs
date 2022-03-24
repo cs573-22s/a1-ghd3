@@ -10,7 +10,7 @@
 
 
 
-<svg width=960 height=600></svg>
+<svg width=600 height=600></svg>
 
 <!--<div>
     <p>Im lazy so i didnt format this very well but heres a cool thing a made then the rest is just junk that i was experimenting with before i made this</p>
@@ -46,6 +46,88 @@
 </div>
 <svg class="svg100"></svg>-->
 <script defer>
+    d3.json('network.json').then(function(data){
+        console.log(data);
+        buildNetwork(data);
+    })
+
+    function buildNetwork(data){
+        var svg = d3.select('svg');
+        var height = +svg.attr('height');
+        var width = +svg.attr('width');
+
+        // simulation definition
+        var simulation = d3.forceSimulation(data.nodes)
+            .force('link', d3.forceLink(data.links).id(d => d.id).distance(100))
+            .force('charge', d3.forceManyBody().strength(-1000))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('x', d3.forceX(d => d.group == 1 ? -1000: 100))
+        // drawing nodes and links
+        var link = svg.append('g')
+            .selectAll('line')
+            .data(data.links)
+            .enter().append('line')
+            .attr('stroke-width', d => Math.sqrt(d.weight*16))
+            .attr('stroke', '#999')
+            .attr('stroke-opacity', 0.6)
+
+        var node = svg.append('g')
+            .selectAll('circle')
+            .data(data.nodes)
+            .enter().append('circle')
+            .attr('r', 8)
+            .attr('fill', d => color(d.group))
+            .attr('stroke', '#fff')
+            .attr('stroke-width', 1.5)
+            .call(drag(simulation));
+
+        node.append('title')
+            .text( d => d.id );
+
+
+        // use simulation to update nodes and links
+        simulation.on('tick', function () {
+            link
+                .attr('x1', d => d.source.x)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x)
+                .attr('y2', d => d.target.y)
+
+            node
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+
+
+
+        })
+        function drag(simulation) {
+            function dragstarted(event) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                event.subject.fx = event.subject.x;
+                event.subject.fy = event.subject.y;
+            }
+
+            function dragged(event) {
+                event.subject.fx = event.x;
+                event.subject.fy = event.y;
+            }
+
+            function dragended(event) {
+                if (!event.active) simulation.alphaTarget(0);
+                event.subject.fx = null;
+                event.subject.fy = null;
+            }
+
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+    }
+
+</script>
+<!--Script for world map -->
+<!--<script defer>
     Promise.all([
         d3.json('world.geojson'),
         d3.csv('cities.csv')
@@ -108,7 +190,7 @@
         }
 
     }
-</script>
+</script>-->
 <%- include("./partials/footer.ejs") %>
 
 </body>
