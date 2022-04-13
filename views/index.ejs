@@ -5,6 +5,30 @@
 <body>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<script src="https://unpkg.com/bio-parsers/umd/bio-parsers.js"></script>
+<script>
+    //const {anyToJson} = require("bio-parsers");
+    let stringOrFile = 'FEY_2_All7_final.fasta'
+    let results;
+    async function main() {
+        //note, anyToJson should be called using an await to allow for file parsing to occur (if a file is being passed)
+        results = await window.bioParsers.anyToJson(
+            stringOrFile //, //if ab1 files are being passed in you should pass files only, otherwise strings or files are fine as inputs
+            //options //options.fileName (eg "pBad.ab1" or "pCherry.fasta") is important to pass here in order for the parser to!
+        )
+        console.log(results[0].success)
+        console.log(results[0].messages)
+//we always return an array of results because some files my contain multiple sequences
+        results[0].success //either true or false
+        results[0].messages //either an array of strings giving any warnings or errors generated during the parsing process
+        results[0].parsedSequence //this will be the generalized json format as specified above :)
+//chromatogram data will be here (ab1 only):
+        results[0].parsedSequence.chromatogramData
+        console.log(results)
+    }
+    main();
+
+</script>
 <script src="./js/scripts.js" defer></script>
 <%- include("./partials/nav.ejs") %>
 
@@ -45,7 +69,31 @@
     </ul>
 </div>
 <svg class="svg100"></svg>-->
-<script defer>
+<!--<script defer>
+    //import {anyToJson} from "bio-parsers";
+    const {anyToJson} = require("bio-parsers");
+    let stringOrFile = 'FEY_2_All7_final.fasta'
+    let results;
+    async function getResults() {
+        results = await anyToJson(
+            stringOrFile // , //if ab1 files are being passed in you should pass files only, otherwise strings or files are fine as inputs
+            // options //options.fileName (eg "pBad.ab1" or "pCherry.fasta") is important to pass here in order for the parser to!
+        )
+    }
+    getResults()
+    //note, anyToJson should be called using an await to allow for file parsing to occur (if a file is being passed)
+
+
+    //we always return an array of results because some files my contain multiple sequences
+    results[0].success //either true or false
+    console.log(results[0].success)
+    results[0].messages //either an array of strings giving any warnings or errors generated during the parsing process
+    results[0].parsedSequence //this will be the generalized json format as specified above :)
+    //chromatogram data will be here (ab1 only):
+    results[0].parsedSequence.chromatogramData
+    console.log(results)
+</script>-->
+<!--<script defer>
     d3.json('network.json').then(function(data){
         console.log(data);
         buildNetwork(data);
@@ -125,7 +173,7 @@
         }
     }
 
-</script>
+</script>-->
 <!--Script for world map -->
 <!--<script defer>
     Promise.all([
