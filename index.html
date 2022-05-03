@@ -1,10 +1,97 @@
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
+<svg id="rectangle_svg1" width=100 height=100></svg>
+
+<svg id="circle_svg2" width=600 height=600></svg>
+
+<svg id="line_svg3" width=200 height=100></svg>
+
+<svg id="path_svg4" width="10" height="10"></svg>
+
+<svg width="220" height="220">
+  <path class="path1" stroke="black">
+</svg>
+
 <script>
   console.log(d3); // test if d3 is loaded
-  // Add an SVG
+
+  var points = [1, 2, 3, 4, 5];
+
+  var linscale = d3.scaleLinear()
+    .domain([0, 100]) // unit: km
+    .range([30, 70]) // unit: pixels
+
   // Add Rectangles
+  // make rectangles and move down when hovered
+  // create svg element:
+var sel = d3.select('#rectangle_svg1')
+    .selectAll('rect')
+    .data(points)
+    .enter().append('rect')
+    .attr('x', function(d) { return linscale(d); })
+    .attr('y', function(d) { return linscale(d); })
+    .attr('width', 30)
+    .attr('height', 10)
+    .attr('id', function(d, i) { return 'rect'+i; })
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('y', function(d) { return linscale(d) + 50; })
+          .attr('fill', 'Brown');
+    });
+
+    d3.select('#rect2')
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('y', function(d) { return linscale(d) - 100; })
+          .attr('fill', 'Teal')
+      });
+
   // Add Circles
+  // make one circle and it grows when hovered
+  var sel = d3.select('#circle_svg2')
+    .selectAll('circle')
+    .data(points)
+    .enter().append('circle')
+    .attr('cx', function(d) { return linscale(d); })
+    .attr('cy', function(d) { return linscale(d); })
+    .attr('r', 10)
+    .attr('id', function(d, i) { return 'rect'+i; })
+    .on('click', function(event) {
+        d3.select(this)
+          .transition()
+          .duration(100)
+          .ease(d3.easeLinear)
+          .attr('cx', function(d) { return linscale(d) + 200; })
+          .attr('fill', 'LightCoral');
+    });
+
   // Add Lines
-  // Add Polygons
+  // the lines grow with text that appears on them
+  var sel = d3.select('#line_svg3')
+    .selectAll('line')
+    .data(points)
+    .enter().append('line')
+    .attr('x1',1)
+    .attr('y1',50)
+    .attr('x2',800)
+    .attr('y2',50)
+    .attr('stroke', 'blue');
+  
+    // create a shape using paths
+    var path = d3.path();
+    path.moveTo(10, 10);  
+    path.lineTo(10, 200); 
+    path.lineTo(200, 200); 
+    path.moveTo(200, 200); 
+    path.lineTo(200, 10);
+    path.moveTo(200, 10); 
+    path.lineTo(10, 10);  
+     d3.select(".path1").attr("d",path)
+ 
 </script>
